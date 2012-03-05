@@ -11,6 +11,9 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 public class ALexProActivity extends TabActivity {
+	
+	private static final float textsize = 9.5f;
+	
     /** Called when the activity is first created. */
     @Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,35 +34,35 @@ public class ALexProActivity extends TabActivity {
 	    intent = new Intent().setClass(this, MainActivity.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("tmain").setIndicator("Main",
-	                      res.getDrawable(R.drawable.house))
+	    spec = tabHost.newTabSpec("tmain").setIndicator("LexPro",
+	                      res.getDrawable(R.drawable.lexpro))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
 	    // Do the same for the other tabs
-	    intent = new Intent().setClass(this, MailActivity.class);
-	    spec = tabHost.newTabSpec("tmail").setIndicator("Mail",
-	                      res.getDrawable(R.drawable.chat2))
+	    intent = new Intent().setClass(this, DownloadActivity.class);
+	    spec = tabHost.newTabSpec("tmail").setIndicator("Загруженные",
+	                      res.getDrawable(R.drawable.favourites))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    intent = new Intent().setClass(this, FavrActivity.class);
-	    spec = tabHost.newTabSpec("tfavr").setIndicator("Избранное",
-	                      res.getDrawable(R.drawable.star))
+	    intent = new Intent().setClass(this, NewsActivity.class);
+	    spec = tabHost.newTabSpec("tfavr").setIndicator("Новости",
+	                      res.getDrawable(R.drawable.news))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    intent = new Intent().setClass(this, PodActivity.class);
-	    spec = tabHost.newTabSpec("tpod").setIndicator("Подкасты",
-	                      res.getDrawable(R.drawable.note))
+	    intent = new Intent().setClass(this, CabinetActivity.class);
+	    spec = tabHost.newTabSpec("tpod").setIndicator("Кабинет",
+	                      res.getDrawable(R.drawable.contacts))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    intent = new Intent().setClass(this, SettActivity.class);
-	    spec = tabHost.newTabSpec("tsett").setIndicator("Настройки",
-	                      res.getDrawable(R.drawable.gear))
-	                  .setContent(intent);
-	    tabHost.addTab(spec);
+//	    intent = new Intent().setClass(this, SettActivity.class);
+//	    spec = tabHost.newTabSpec("tsett").setIndicator("Настройки",
+//	                      res.getDrawable(R.drawable.gear))
+//	                  .setContent(intent);
+//	    tabHost.addTab(spec);
 	  
 	    LinearLayout ll = (LinearLayout) tabHost.getChildAt(0);
 	    TabWidget tw = (TabWidget) ll.getChildAt(0);

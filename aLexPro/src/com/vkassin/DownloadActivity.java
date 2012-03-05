@@ -2,6 +2,6 @@ package com.vkassin;
 
 import android.app.Activity;
 
-public class MainActivity extends Activity {
+public class DownloadActivity extends Activity {
 
 }
