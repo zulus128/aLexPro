@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.alexpro;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class ALexProActivity extends TabActivity {
 	
-	private static final float textsize = 9.5f;
+	private static final float textsize = 11.5f;
 	
     /** Called when the activity is first created. */
     @Override
@@ -41,25 +41,25 @@ public class ALexProActivity extends TabActivity {
 
 	    // Do the same for the other tabs
 	    intent = new Intent().setClass(this, DownloadActivity.class);
-	    spec = tabHost.newTabSpec("tmail").setIndicator("Загруженные",
+	    spec = tabHost.newTabSpec("tfavr").setIndicator("Загруженные",
 	                      res.getDrawable(R.drawable.favourites))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
 	    intent = new Intent().setClass(this, NewsActivity.class);
-	    spec = tabHost.newTabSpec("tfavr").setIndicator("Новости",
+	    spec = tabHost.newTabSpec("tnews").setIndicator("Новости",
 	                      res.getDrawable(R.drawable.news))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
 	    intent = new Intent().setClass(this, CabinetActivity.class);
-	    spec = tabHost.newTabSpec("tpod").setIndicator("Кабинет",
+	    spec = tabHost.newTabSpec("tcab").setIndicator("Кабинет",
 	                      res.getDrawable(R.drawable.contacts))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
 //	    intent = new Intent().setClass(this, SettActivity.class);
-//	    spec = tabHost.newTabSpec("tsett").setIndicator("Настройки",
+//	    spec = tabHost.newTabSpec("tsett").setIndicator("�?а�?тройки",
 //	                      res.getDrawable(R.drawable.gear))
 //	                  .setContent(intent);
 //	    tabHost.addTab(spec);
@@ -89,11 +89,11 @@ public class ALexProActivity extends TabActivity {
 	    lf.setTextSize(textsize);
 	    lf.setPadding(0, 0, 0, 2);
 
-	    rllf = (RelativeLayout) tw.getChildAt(4);
-//	    rllf.setBackgroundColor(0xFF0000FF);
-	    lf = (TextView) rllf.getChildAt(1);
-	    lf.setTextSize(textsize);
-	    lf.setPadding(0, 0, 0, 2);
+//	    rllf = (RelativeLayout) tw.getChildAt(4);
+////	    rllf.setBackgroundColor(0xFF0000FF);
+//	    lf = (TextView) rllf.getChildAt(1);
+//	    lf.setTextSize(textsize);
+//	    lf.setPadding(0, 0, 0, 2);
 	    
 	    tabHost.setCurrentTab(0);
 	}
