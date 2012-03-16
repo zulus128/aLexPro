@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
+//123
 public class MainActivity extends Activity {
 
 	private static final String TAG = "aLexPro.MainActivity"; 
