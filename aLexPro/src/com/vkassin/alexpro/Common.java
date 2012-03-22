@@ -17,7 +17,8 @@ public class Common {
 	public static final String TEST_STRING4 = "http://online.lexpro.ru";
 	public static final String TEST_STRING5 = "login.php";
 	
-	public static final String WEB_OPEN = "http://open.lexpro.ru";
+//	public static final String WEB_OPEN = "http://open.lexpro.ru";
+	public static final String WEB_OPEN = "http://lexpro.ru";
 	public static final String WEB_ONLINE = "http://online.lexpro.ru";
 	
 	

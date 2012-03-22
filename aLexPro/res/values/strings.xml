@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, ALexProActivity!</string>
     <string name="app_name">LexPro</string>
+    <string name="btn1">Начать работу</string>
+    <string name="btn2">Вход для клиентов</string>
 
 </resources>
