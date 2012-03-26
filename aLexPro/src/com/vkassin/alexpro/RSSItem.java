@@ -37,11 +37,11 @@ public class RSSItem implements Serializable {
 	}
 		
 	public String getShortTitle() {
-		return title.length() > 48 ? title.substring(0, 45) + "..." : title;
+		return title.length() > 148 ? title.substring(0, 145) + "..." : title;
 	}
 	
 	public String getShortContent() {
-		return description.length() > 100 ? description.substring(0, 97) + "..." : description;
+		return description.length() > 160 ? description.substring(0, 157) + "..." : description;
 	}
 
 	public String getShortText() {

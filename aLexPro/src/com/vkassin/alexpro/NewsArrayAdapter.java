@@ -37,8 +37,8 @@ public class NewsArrayAdapter extends ArrayAdapter<RSSItem> {
     		
     		title.setText(item.getShortTitle());
 //    		title.setText(item.title);
-    		date.setText(DateFormat.format("hh:mm", item.getPubDate()));
-    		rubr.setText(item.rubric);
+    		date.setText(DateFormat.format("dd.MM.yy", item.getPubDate()));
+    		rubr.setText(item.getShortContent());
     		
     	}
     	

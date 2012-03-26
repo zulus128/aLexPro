@@ -4,7 +4,15 @@
 	<LinearLayout android:orientation="vertical" android:id="@+id/LinLayout01"
 		android:layout_width="fill_parent" android:layout_height="fill_parent">
 
-
+<TextView
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content"
+android:textSize="16dp"
+android:textColor="#FFFFFF"
+android:background="#0000FF"
+android:text="@string/NewsTitle"
+></TextView>
+	    
 		<LinearLayout android:id="@+id/LinearLayout05"
 			android:layout_width="fill_parent" android:layout_height="1px"
 			android:orientation="vertical" android:paddingTop="1dp"

@@ -76,8 +76,10 @@ public class Common {
 			HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
 	        urlc.setRequestProperty("User-Agent", "Android Application: aBuh");
 	        urlc.setRequestProperty("Connection", "close");
-	        urlc.setRequestProperty("Accept-Charset", "windows-1251");
-			
+//	        urlc.setRequestProperty("Accept-Charset", "windows-1251");
+//	        urlc.setRequestProperty("Accept-Charset", "windows-1251,utf-8;q=0.7,*;q=0.7");
+	        urlc.setRequestProperty("Accept-Charset", "utf-8");
+
 	        urlc.setConnectTimeout(1000 * 5); // mTimeout is in seconds
 	        urlc.setDoInput(true);
 	        urlc.connect();
@@ -102,7 +104,8 @@ public class Common {
                         baf.append((byte) current);
                 }
                 ByteArrayInputStream bais = new ByteArrayInputStream(baf.toByteArray());
-                Reader isr = new InputStreamReader(bais, "windows-1251");
+//                Reader isr = new InputStreamReader(bais, "windows-1251");
+                Reader isr = new InputStreamReader(bais, "utf-8");
                 InputSource ist = new InputSource();
                 //ist.setEncoding("UTF-8");
                 ist.setCharacterStream(isr);

@@ -2,18 +2,23 @@ package com.vkassin.alexpro;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
 import android.util.Log;
 import com.vkassin.alexpro.RSSItem;
 import com.vkassin.alexpro.Common.item_type;
 
 public class RSSHandler extends DefaultHandler {
 	
-	private static final String TAG = "aBuh.RSSHandler"; 
+	private static final String TAG = "aLexPro.RSSHandler"; 
 	
 	private ArrayList<RSSItem> parsedDate = new ArrayList<RSSItem>();
 	
@@ -44,7 +49,7 @@ public class RSSHandler extends DefaultHandler {
     @Override
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
     	
-    	//Log.w(TAG, "startElement: " + localName.trim());
+//    	Log.w(TAG, "startElement: " + localName.trim());
     	
     	if(localName.trim().equals(Common.ITEM_TAG)) {
     		inItem = true;
@@ -75,7 +80,7 @@ public class RSSHandler extends DefaultHandler {
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
     	
 		String ss = sb.toString();
-    	//Log.w(TAG, "endElement: " + localName.trim() + " sb: " + ss);
+//    	Log.w(TAG, "endElement: " + localName.trim() + " sb: " + ss);
 
     	if(localName.trim().equals(Common.ITEM_TAG)) {
     		
@@ -95,9 +100,11 @@ public class RSSHandler extends DefaultHandler {
     					currentItem.description = ss;
     			}
     			else
-					if(localName.trim().equals(Common.DATE_TAG)) {
+					if(inItem && localName.trim().equals(Common.DATE_TAG)) {
 			       		try {
-		        			currentItem.pubDate = new Date(Date.parse(ss));
+//			       			DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.US);
+			       			DateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy");
+		        			currentItem.pubDate = df.parse(ss);//new Date(Date.parse(ss));
 		        		} catch (Exception e) {
 		        			Log.e(TAG, "Can't convert date: " + ss);
 		        			currentItem.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
