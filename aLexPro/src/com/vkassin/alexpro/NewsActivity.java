@@ -84,7 +84,7 @@ public class NewsActivity extends Activity {
 
     	new getRSS().execute();
     	
-    	NewsDetail.resetViewsList();
+//    	NewsDetail.resetViewsList();
 
     }
     
