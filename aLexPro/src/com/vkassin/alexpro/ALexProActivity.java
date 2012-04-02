@@ -21,7 +21,7 @@ public class ALexProActivity extends TabActivity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
 
-//	    Common.app_ctx = getApplicationContext();
+	    Common.app_ctx = getApplicationContext();
 	    
  //       Common.prepareUserAgent(this);
 

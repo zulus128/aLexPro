@@ -2,10 +2,16 @@ package com.vkassin.alexpro;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Reader;
+import java.io.StreamCorruptedException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,7 +27,9 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.vkassin.alexpro.RSSHandler;
 import com.vkassin.alexpro.RSSItem;
@@ -50,10 +58,92 @@ public class Common {
 	public static final String WEB_OPEN = "http://open.lexpro.ru";
 //	public static final String WEB_OPEN = "http://lexpro.ru";
 	public static final String WEB_ONLINE = "http://online.lexpro.ru";
+	public static final String FAV_FNAME = "favourites";
 	
+	public static Context app_ctx;
 
 	public static ArrayList<RSSItem> news;
 	public static RSSItem curnews;
+	private static ArrayList<RSSItem> favourites;
+	
+	public static void addToFavr(RSSItem item) {
+	
+		favourites.add(item);
+		
+		saveFavr();
+		
+	}
+	
+	public static void delFavr(int i) {
+		
+		favourites.remove(i);
+		Log.w(TAG, "size1 = " + favourites.size());
+		saveFavr();
+		
+	}
+	
+	public static ArrayList<RSSItem> getFavrs() {
+	
+		Log.w(TAG, "size = " + favourites.size());
+		return favourites;
+	}
+	
+	public static void saveFavr() {
+	
+		FileOutputStream fos;
+		try {
+			
+			fos = app_ctx.openFileOutput(FAV_FNAME, Context.MODE_PRIVATE);
+			ObjectOutputStream os = new ObjectOutputStream(fos);
+			os.writeObject(favourites);
+			os.close();
+			fos.close();
+			
+		} catch (FileNotFoundException e) {
+
+			Toast.makeText(app_ctx, "Файл не записан " + e.toString(), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			Toast.makeText(app_ctx, "Файл не записан: " + e.toString(), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
+		}
+		
+		Toast.makeText(app_ctx, "Избранное сохранено", Toast.LENGTH_SHORT).show();
+
+	}
+	
+	public static void loadFavr() {
+	   
+	FileInputStream fileInputStream;
+	try {
+		
+		fileInputStream = app_ctx.openFileInput(FAV_FNAME);
+		ObjectInputStream oInputStream = new ObjectInputStream(fileInputStream);
+		Object one = oInputStream.readObject();
+		favourites = (ArrayList<RSSItem>) one;
+		oInputStream.close();
+		fileInputStream.close();
+		
+	} catch (FileNotFoundException e) {
+		
+		//e.printStackTrace();
+  	   Log.i(TAG, "creates blank. no file " + FAV_FNAME);
+ 	   favourites = new ArrayList<RSSItem>();
+ 	   
+	} catch (StreamCorruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	//return favourites;
+	}
 	
 	public static ArrayList<RSSItem> getNews() {
 		
