@@ -116,5 +116,22 @@ public class NewsActivity extends Activity {
         }
     }
     
-    		
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.newsmenu, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.refreshitem: {
+	        	
+	        	this.refresh();
+                break;
+	        }
+	    }
+	    return true;
+	}    		
 }
