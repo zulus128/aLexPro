@@ -6,5 +6,6 @@
     <string name="btn1">Начать работу</string>
     <string name="btn2">Вход для клиентов</string>
     <string name="NewsTitle">Официальный сайт компании \'ЛЕКСПРО\'</string>
+    <string name="CabTitle">Номер версии: 1.0</string>
 
 </resources>

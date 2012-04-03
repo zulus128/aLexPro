@@ -10,7 +10,7 @@ public class CabinetActivity extends Activity {
 	public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
-//		setContentView(R.layout.fas);
+		setContentView(R.layout.cabin);
 		 
 	}
 }

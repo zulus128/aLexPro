@@ -24,7 +24,7 @@
             <activity android:name=".MainActivity"></activity>
             <activity android:name=".DownloadActivity"></activity>
             <activity android:name=".NewsActivity"></activity>
-            <activity android:name=".alexpro.CabinetActivity"></activity>
+            <activity android:name=".CabinetActivity"></activity>
 
             <activity android:name=".NewsDetail"></activity>
             
