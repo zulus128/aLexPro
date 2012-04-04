@@ -23,6 +23,8 @@ public class ALexProActivity extends TabActivity {
 
 	    Common.app_ctx = getApplicationContext();
 	    
+	    Common.loadFavr();
+	    
  //       Common.prepareUserAgent(this);
 
 	    Resources res = getResources(); // Resource object to get Drawables

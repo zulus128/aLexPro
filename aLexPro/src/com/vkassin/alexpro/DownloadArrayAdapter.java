@@ -11,12 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class FavsArrayAdapter extends ArrayAdapter<RSSItem> {
+public class DownloadArrayAdapter extends ArrayAdapter<RSSItem> {
 	private ArrayList<RSSItem> items;
 	private Context ctx;
 	private int resourceId;
 	
-	public FavsArrayAdapter(Context context, int resourceId, ArrayList<RSSItem> objects) {
+	public DownloadArrayAdapter(Context context, int resourceId, ArrayList<RSSItem> objects) {
 		super(context, resourceId, objects);
 		this.items = objects;
 		this.ctx = context;

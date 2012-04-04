@@ -15,7 +15,7 @@ public class DownloadActivity extends Activity {
 
 	private static final String TAG = "aLexPro.DownloadActivity"; 
 	private ListView list;
-	private FavsArrayAdapter adapter;
+	private DownloadArrayAdapter adapter;
 	
 	public void onCreate(Bundle icicle) {
 
@@ -23,9 +23,11 @@ public class DownloadActivity extends Activity {
         setContentView(R.layout.favs);
         
         list = (ListView)this.findViewById(R.id.FavsList);
-    	adapter = new FavsArrayAdapter(this, R.layout.favsitem, new ArrayList<RSSItem>());
+
+    	ArrayList<RSSItem> items = Common.getFavrs();
+		adapter = new DownloadArrayAdapter(this, R.layout.favsitem, items);
     	list.setAdapter(adapter);
-    	
+
     	list.setOnItemClickListener(new OnItemClickListener() {
 			
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {

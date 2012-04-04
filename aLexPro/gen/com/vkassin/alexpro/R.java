@@ -36,8 +36,9 @@ public final class R {
         public static final int ProgressBar01=0x7f06000a;
         public static final int button1=0x7f060005;
         public static final int button2=0x7f060006;
+        public static final int favitem=0x7f060011;
         public static final int imageView1=0x7f060000;
-        public static final int refreshitem=0x7f060011;
+        public static final int refreshitem=0x7f060012;
         public static final int relativeLayout1=0x7f060001;
         public static final int web_detail=0x7f06000c;
         public static final int web_engine=0x7f060004;
@@ -54,7 +55,8 @@ public final class R {
         public static final int newsitem=0x7f030008;
     }
     public static final class menu {
-        public static final int newsmenu=0x7f050000;
+        public static final int mainmenu=0x7f050000;
+        public static final int newsmenu=0x7f050001;
     }
     public static final class string {
         public static final int CabTitle=0x7f040005;

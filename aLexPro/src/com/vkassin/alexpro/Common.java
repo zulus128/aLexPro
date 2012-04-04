@@ -38,7 +38,7 @@ public class Common {
 
 	private static final String TAG = "aLexPro.Common"; 
 
-	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_TOPNEWS, IT_QA, IT_PODCAST, IT_BANNER };
+	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_KODEKS };
 
 	public static final String MENU_URL_FOR_REACH = "www.lexpro.ru";
 //	public static final String TOPMENU_URL = "http://lexpro.ru/rss";

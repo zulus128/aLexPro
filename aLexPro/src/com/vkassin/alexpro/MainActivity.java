@@ -1,8 +1,13 @@
 package com.vkassin.alexpro;
 
+import com.vkassin.alexpro.Common.item_type;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
@@ -54,4 +59,25 @@ public class MainActivity extends Activity {
 	    }
 
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.mainmenu, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.favitem: {
+	        	RSSItem i = new RSSItem(item_type.IT_KODEKS);
+	        	i.title = 
+	        	i.mplink =
+	        	Common.addToFavr(i);
+                break;
+	        }
+	    }
+	    return true;
+	}    		
 }
