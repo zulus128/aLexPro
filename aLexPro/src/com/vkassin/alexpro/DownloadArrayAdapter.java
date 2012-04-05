@@ -3,7 +3,6 @@ package com.vkassin.alexpro;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,15 +38,18 @@ public class DownloadArrayAdapter extends ArrayAdapter<RSSItem> {
     }
 
 	public void setItems(ArrayList<RSSItem> objects) {
+		
 		this.items.clear();
 		this.items.addAll(objects);
 	}
 	
 	public void addItems(ArrayList<RSSItem> objects) {
+		
 		this.items.addAll(objects);
 	}
 
 	public ArrayList<RSSItem> getItems() {
+		
 		return items;
 	}
 }
