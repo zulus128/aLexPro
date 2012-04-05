@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -71,10 +72,18 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	        case R.id.favitem: {
-	        	RSSItem i = new RSSItem(item_type.IT_KODEKS);
-	        	i.title = 
-	        	i.mplink =
-	        	Common.addToFavr(i);
+	        	if(engine.getUrl().indexOf(Common.TEST_STRING1) != -1) {
+	        	
+	        		RSSItem i = new RSSItem(item_type.IT_KODEKS);
+	        		i.title = engine.getTitle();
+	        		i.mplink = engine.getUrl();
+	        		Common.addToFavr(i);
+	        	}
+	        	else {
+	        		
+	    			Toast.makeText(Common.app_ctx, "В загруженные можно добавлять только документы!", Toast.LENGTH_SHORT).show();
+
+	        	}
                 break;
 	        }
 	    }

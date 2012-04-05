@@ -29,9 +29,11 @@ public class DownloadArrayAdapter extends ArrayAdapter<RSSItem> {
     	LayoutInflater vi = (LayoutInflater)ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	layout.addView(vi.inflate(resourceId, null));
     	
-   		TextView title = (TextView) layout.findViewById(R.id.FavsTextView);
-  		
-   		title.setText("title");
+    	RSSItem item = getItems().get(position);
+    	if (item != null) {
+       		TextView title = (TextView) layout.findViewById(R.id.FavsTextView);
+       		title.setText(item.getShortTitle());
+    	}
     		
     	return layout;
     }
