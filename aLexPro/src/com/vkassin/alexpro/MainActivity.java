@@ -77,13 +77,14 @@ public class MainActivity extends Activity {
 	        	
 	        	    Common.addfav_flag = true;
 	        	    Common.addfav_url = engine.getUrl();
-	        		Common.tabHost.setCurrentTab(1);
 
+	        	    RSSItem i = new RSSItem(item_type.IT_KODEKS);
+	        		i.title = engine.getTitle();
+	        		i.mplink = Common.addfav_url;
+	        		Common.addToFavr(i);
 	        		
-//	        		RSSItem i = new RSSItem(item_type.IT_KODEKS);
-//	        		i.title = engine.getTitle();
-//	        		i.mplink = engine.getUrl();
-//	        		Common.addToFavr(i);
+	        		Common.tabHost.setCurrentTab(1);
+	        		
 	        	}
 	        	else {
 	        		

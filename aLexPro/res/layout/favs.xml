@@ -4,6 +4,14 @@
      android:layout_width="fill_parent"
      android:layout_height="fill_parent"
      >
+ 
+      <RelativeLayout
+  android:id="@+id/layout1"
+     android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      >
+      
      <ListView  
          android:id="@android:id/list"
          android:layout_width="fill_parent"
@@ -22,4 +30,21 @@
          android:layout_height="fill_parent"
          android:text="Нет загруженных документов"
          />
+
+ </RelativeLayout>
+ 
+ <RelativeLayout
+  android:id="@+id/layout2"
+     android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      >
+        <WebView android:id="@+id/web_engine_fav"  
+             android:layout_width="fill_parent"  
+             android:layout_height="fill_parent"  
+            /> 
+            
+ </RelativeLayout>
+ 
  </LinearLayout>
+ 

@@ -23,24 +23,27 @@ public final class R {
         public static final int r_051616=0x7f020009;
     }
     public static final class id {
-        public static final int FavsTextView=0x7f060002;
-        public static final int LinLayout01=0x7f060006;
-        public static final int LinearLayout01=0x7f06000c;
-        public static final int LinearLayout05=0x7f060007;
-        public static final int NewsDateTextView=0x7f06000e;
-        public static final int NewsDetailLayout0=0x7f06000a;
-        public static final int NewsList=0x7f060008;
-        public static final int NewsRubricTextView=0x7f06000f;
-        public static final int NewsTitleTextView=0x7f06000d;
-        public static final int ProgressBar01=0x7f060009;
-        public static final int button1=0x7f060004;
-        public static final int button2=0x7f060005;
-        public static final int favitem=0x7f060010;
+        public static final int FavsTextView=0x7f060005;
+        public static final int LinLayout01=0x7f060009;
+        public static final int LinearLayout01=0x7f06000f;
+        public static final int LinearLayout05=0x7f06000a;
+        public static final int NewsDateTextView=0x7f060011;
+        public static final int NewsDetailLayout0=0x7f06000d;
+        public static final int NewsList=0x7f06000b;
+        public static final int NewsRubricTextView=0x7f060012;
+        public static final int NewsTitleTextView=0x7f060010;
+        public static final int ProgressBar01=0x7f06000c;
+        public static final int button1=0x7f060007;
+        public static final int button2=0x7f060008;
+        public static final int favitem=0x7f060013;
         public static final int imageView1=0x7f060000;
-        public static final int refreshitem=0x7f060011;
+        public static final int layout1=0x7f060002;
+        public static final int layout2=0x7f060003;
+        public static final int refreshitem=0x7f060014;
         public static final int relativeLayout1=0x7f060001;
-        public static final int web_detail=0x7f06000b;
-        public static final int web_engine=0x7f060003;
+        public static final int web_detail=0x7f06000e;
+        public static final int web_engine=0x7f060006;
+        public static final int web_engine_fav=0x7f060004;
     }
     public static final class layout {
         public static final int cabin=0x7f030000;
