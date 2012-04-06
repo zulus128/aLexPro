@@ -103,6 +103,7 @@ public class Common {
 			os.writeObject(favourites);
 			os.close();
 			fos.close();
+			Log.w(TAG, "wrote: " + favourites.size());
 			
 		} catch (FileNotFoundException e) {
 
@@ -114,7 +115,7 @@ public class Common {
 			e.printStackTrace();
 		}
 		
-		Toast.makeText(app_ctx, "Избранное сохранено", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(app_ctx, "Загруженное сохранено", Toast.LENGTH_SHORT).show();
 
 	}
 	

@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 public class DownloadActivity extends ListActivity {
@@ -16,6 +19,7 @@ public class DownloadActivity extends ListActivity {
 	private static final String TAG = "aLexPro.DownloadActivity"; 
 //	private ListView list;
 	private DownloadArrayAdapter adapter;
+	private ProgressBar pb;
 	
 	public void onCreate(Bundle icicle) {
 
@@ -26,8 +30,8 @@ public class DownloadActivity extends ListActivity {
 
 //        list.setEmptyView(findViewById(R.id.empty));
         
-    	ArrayList<RSSItem> items = Common.getFavrs();
-		adapter = new DownloadArrayAdapter(this, R.layout.favsitem, items);
+ //   	ArrayList<RSSItem> items = Common.getFavrs();
+		adapter = new DownloadArrayAdapter(this, R.layout.favsitem, new ArrayList<RSSItem>());
 //    	list.setAdapter(adapter);
 		setListAdapter(adapter);
 
@@ -46,23 +50,57 @@ public class DownloadActivity extends ListActivity {
 		
 		adapter.setItems(Common.getFavrs());
 		adapter.notifyDataSetChanged();
-		
-        RelativeLayout Layout1 = (RelativeLayout)findViewById(R.id.layout1);
-        RelativeLayout Layout2 = (RelativeLayout)findViewById(R.id.layout2);
+        
+//		this.getListView().setVisibility(View.GONE);
+//		WebView engine = (WebView) findViewById(R.id.web_engine_fav);
+//        engine.setVisibility(View.VISIBLE);
+//		engine.getSettings().setJavaScriptEnabled(true);
+//		engine.loadUrl("http://www.rbc.ru");
+
+//        RelativeLayout Layout1 = (RelativeLayout)findViewById(R.id.layout1);
+//        RelativeLayout Layout2 = (RelativeLayout)findViewById(R.id.layout2);
 
         if(Common.addfav_flag) {
 			
-	        Layout1.setVisibility(View.GONE);
-	        Layout2.setVisibility(View.VISIBLE);
+        	Common.addfav_flag = false;
+    		this.getListView().setVisibility(View.GONE);
     		WebView engine = (WebView) findViewById(R.id.web_engine_fav);
-//    		engine.setWebViewClient(new HelloWebViewClient());
+            engine.setVisibility(View.VISIBLE);
     		engine.getSettings().setJavaScriptEnabled(true);
     		engine.loadUrl(Common.addfav_url);
+    		
+    		pb = (ProgressBar)findViewById(R.id.ProgressBar02);
+//    		pb.setVisibility(View.VISIBLE);
+    		
+    	    engine.setWebChromeClient(new WebChromeClient() {
+    			
+    			public void onProgressChanged(WebView view, int progress) {
+    				
+    				if(progress < 100)
+    					pb.setVisibility(View.VISIBLE);
+    				else
+    					pb.setVisibility(View.GONE);
+    					
+//    				activity.setProgress(progress * 1000);
+//    				Log.w(TAG, ""+progress);
+    			}
+    		});
+    	    
+    	    engine.setWebViewClient(new WebViewClient() {
+    	    	
+    	    	public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+
+    	    		pb.setVisibility(View.GONE);
+    	    	}
+    	    });
+
+
 		}
 		else {
 		
-	        Layout2.setVisibility(View.GONE);
-	        Layout1.setVisibility(View.VISIBLE);
+    		this.getListView().setVisibility(View.VISIBLE);
+    		WebView engine = (WebView) findViewById(R.id.web_engine_fav);
+            engine.setVisibility(View.GONE);
 
 		}
 	}
@@ -72,15 +110,18 @@ public class DownloadActivity extends ListActivity {
         
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-	        RelativeLayout Layout1 = (RelativeLayout)findViewById(R.id.layout1);
-	        RelativeLayout Layout2 = (RelativeLayout)findViewById(R.id.layout2);
-	        Layout2.setVisibility(View.GONE);
-	        Layout1.setVisibility(View.VISIBLE);
+			adapter.setItems(Common.getFavrs());
+			adapter.notifyDataSetChanged();
+
+    		this.getListView().setVisibility(View.VISIBLE);
+    		WebView engine = (WebView) findViewById(R.id.web_engine_fav);
+            engine.setVisibility(View.GONE);
             
 	        return true;
         }
         
         return super.onKeyDown(keyCode, event);
     }
+	
 	
 }

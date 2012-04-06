@@ -10,16 +10,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TabHost;
 import android.widget.Toast;
+import android.util.Log;
 
 public class MainActivity extends Activity {
 
 	private static final String TAG = "aLexPro.MainActivity"; 
 	WebView engine;
+	private ProgressBar pb;
 	
 	public void onCreate(Bundle icicle) {
 
@@ -27,17 +31,40 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.mainstart);
 		
 	    Button btn1 = (Button) this.findViewById(R.id.button1);
-
+		
 	    if (btn1!= null) {
 	        btn1.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {
 
 	        		setContentView(R.layout.mainact);
+	        	    pb = (ProgressBar)findViewById(R.id.ProgressBar00);
 	        		engine = (WebView) findViewById(R.id.web_engine);
 	        		engine.setWebViewClient(new HelloWebViewClient());
 	        		engine.getSettings().setJavaScriptEnabled(true);
 	        		engine.loadUrl(Common.WEB_OPEN);
+//	        		pb.setVisibility(View.VISIBLE);
+	        		final Activity activity = MainActivity.this;
+	        	    engine.setWebChromeClient(new WebChromeClient() {
+	        			
+	        			public void onProgressChanged(WebView view, int progress) {
+	        				
+	        				if(progress < 100)
+	        					pb.setVisibility(View.VISIBLE);
+	        				else
+	        					pb.setVisibility(View.GONE);
+	        					
+//	        				activity.setProgress(progress * 1000);
+//	        				Log.w(TAG, ""+progress);
+	        			}
+	        		});
+	        	    
+	        	    engine.setWebViewClient(new WebViewClient() {
+	        	    	
+	        	    	public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
 
+	        	    		pb.setVisibility(View.GONE);
+	        	    	}
+	        	    });
 	            }
 	        });
 	    }
@@ -76,7 +103,7 @@ public class MainActivity extends Activity {
 	        	if(engine.getUrl().indexOf(Common.TEST_STRING1) != -1) {
 	        	
 	        	    Common.addfav_flag = true;
-	        	    Common.addfav_url = engine.getUrl();
+	        	    Common.addfav_url = engine.getUrl().replaceFirst(Common.TEST_STRING1, Common.TEST_STRING2);
 
 	        	    RSSItem i = new RSSItem(item_type.IT_KODEKS);
 	        		i.title = engine.getTitle();
