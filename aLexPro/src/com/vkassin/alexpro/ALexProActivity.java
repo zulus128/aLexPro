@@ -28,7 +28,7 @@ public class ALexProActivity extends TabActivity {
  //       Common.prepareUserAgent(this);
 
 	    Resources res = getResources(); // Resource object to get Drawables
-	    TabHost tabHost = getTabHost();  // The activity TabHost
+	    Common.tabHost = getTabHost();  // The activity TabHost
 	    TabHost.TabSpec spec;  // Reusable TabSpec for each tab
 	    Intent intent;  // Reusable Intent for each tab
 
@@ -36,29 +36,29 @@ public class ALexProActivity extends TabActivity {
 	    intent = new Intent().setClass(this, MainActivity.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("tmain").setIndicator("LexPro",
+	    spec = Common.tabHost.newTabSpec("tmain").setIndicator("LexPro",
 	                      res.getDrawable(R.drawable.lexpro))
 	                  .setContent(intent);
-	    tabHost.addTab(spec);
+	    Common.tabHost.addTab(spec);
 
 	    // Do the same for the other tabs
 	    intent = new Intent().setClass(this, DownloadActivity.class);
-	    spec = tabHost.newTabSpec("tfavr").setIndicator("Загруженные",
+	    spec = Common.tabHost.newTabSpec("tfavr").setIndicator("Загруженные",
 	                      res.getDrawable(R.drawable.favourites))
 	                  .setContent(intent);
-	    tabHost.addTab(spec);
+	    Common.tabHost.addTab(spec);
 
 	    intent = new Intent().setClass(this, NewsActivity.class);
-	    spec = tabHost.newTabSpec("tnews").setIndicator("Новости",
+	    spec = Common.tabHost.newTabSpec("tnews").setIndicator("Новости",
 	                      res.getDrawable(R.drawable.news))
 	                  .setContent(intent);
-	    tabHost.addTab(spec);
+	    Common.tabHost.addTab(spec);
 
 	    intent = new Intent().setClass(this, CabinetActivity.class);
-	    spec = tabHost.newTabSpec("tcab").setIndicator("Кабинет",
+	    spec = Common.tabHost.newTabSpec("tcab").setIndicator("Кабинет",
 	                      res.getDrawable(R.drawable.contacts))
 	                  .setContent(intent);
-	    tabHost.addTab(spec);
+	    Common.tabHost.addTab(spec);
 
 //	    intent = new Intent().setClass(this, SettActivity.class);
 //	    spec = tabHost.newTabSpec("tsett").setIndicator("�?а�?тройки",
@@ -66,7 +66,7 @@ public class ALexProActivity extends TabActivity {
 //	                  .setContent(intent);
 //	    tabHost.addTab(spec);
 	  
-	    LinearLayout ll = (LinearLayout) tabHost.getChildAt(0);
+	    LinearLayout ll = (LinearLayout) Common.tabHost.getChildAt(0);
 	    TabWidget tw = (TabWidget) ll.getChildAt(0);
 	    RelativeLayout rllf = (RelativeLayout) tw.getChildAt(0);
 //	    rllf.setBackgroundColor(0xFF0000FF);
@@ -97,6 +97,6 @@ public class ALexProActivity extends TabActivity {
 //	    lf.setTextSize(textsize);
 //	    lf.setPadding(0, 0, 0, 2);
 	    
-	    tabHost.setCurrentTab(0);
+	    Common.tabHost.setCurrentTab(0);
 	}
 }

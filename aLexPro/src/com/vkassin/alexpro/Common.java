@@ -29,6 +29,7 @@ import org.xml.sax.XMLReader;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.vkassin.alexpro.RSSHandler;
@@ -65,6 +66,10 @@ public class Common {
 	public static ArrayList<RSSItem> news;
 	public static RSSItem curnews;
 	private static ArrayList<RSSItem> favourites;
+	
+	public static TabHost tabHost;
+	public static boolean addfav_flag;
+	public static String addfav_url;
 	
 	public static void addToFavr(RSSItem item) {
 	

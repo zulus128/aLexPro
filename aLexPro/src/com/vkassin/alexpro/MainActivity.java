@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -74,10 +75,15 @@ public class MainActivity extends Activity {
 	        case R.id.favitem: {
 	        	if(engine.getUrl().indexOf(Common.TEST_STRING1) != -1) {
 	        	
-	        		RSSItem i = new RSSItem(item_type.IT_KODEKS);
-	        		i.title = engine.getTitle();
-	        		i.mplink = engine.getUrl();
-	        		Common.addToFavr(i);
+	        	    Common.addfav_flag = true;
+	        	    Common.addfav_url = engine.getUrl();
+	        		Common.tabHost.setCurrentTab(1);
+
+	        		
+//	        		RSSItem i = new RSSItem(item_type.IT_KODEKS);
+//	        		i.title = engine.getTitle();
+//	        		i.mplink = engine.getUrl();
+//	        		Common.addToFavr(i);
 	        	}
 	        	else {
 	        		
