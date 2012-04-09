@@ -40,6 +40,7 @@ public class Common {
 	private static final String TAG = "aLexPro.Common"; 
 
 	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_KODEKS };
+	public enum paid_type { PT_NONE, PT_OPEN, PT_ONLINE };
 
 	public static final String MENU_URL_FOR_REACH = "www.lexpro.ru";
 //	public static final String TOPMENU_URL = "http://lexpro.ru/rss";
@@ -60,6 +61,7 @@ public class Common {
 //	public static final String WEB_OPEN = "http://lexpro.ru";
 	public static final String WEB_ONLINE = "http://online.lexpro.ru";
 	public static final String FAV_FNAME = "favourites";
+	public static final String SETT_FNAME = "settings";
 	
 	public static Context app_ctx;
 
@@ -70,6 +72,9 @@ public class Common {
 	public static TabHost tabHost;
 	public static boolean addfav_flag;
 	public static String addfav_url;
+	public static String title;
+	
+	public static paid_type paid;
 	
 	public static void addToFavr(RSSItem item) {
 	
@@ -115,7 +120,7 @@ public class Common {
 			e.printStackTrace();
 		}
 		
-//		Toast.makeText(app_ctx, "Загруженное сохранено", Toast.LENGTH_SHORT).show();
+		Toast.makeText(app_ctx, "Загружено и сохранено", Toast.LENGTH_SHORT).show();
 
 	}
 	
@@ -150,6 +155,119 @@ public class Common {
 	
 	//return favourites;
 	}
+	
+	public static void saveStringToFile(String name, String s) {
+		
+		FileOutputStream fos;
+		try {
+			
+			fos = app_ctx.openFileOutput(name, Context.MODE_PRIVATE);
+			ObjectOutputStream os = new ObjectOutputStream(fos);
+			os.writeObject(s);
+			os.close();
+			fos.close();
+			Log.w(TAG, "wrote: " + name);
+			
+		} catch (FileNotFoundException e) {
+
+			Toast.makeText(app_ctx, "Файл не записан " + e.toString(), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			Toast.makeText(app_ctx, "Файл не записан: " + e.toString(), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static String loadStringFromFile(String name) {
+		   
+		FileInputStream fileInputStream;
+		String s = "";
+		try {
+			
+			fileInputStream = app_ctx.openFileInput(name);
+			ObjectInputStream oInputStream = new ObjectInputStream(fileInputStream);
+			Object one = oInputStream.readObject();
+			s = (String) one;
+			oInputStream.close();
+			fileInputStream.close();
+			
+		} catch (FileNotFoundException e) {
+			
+			//e.printStackTrace();
+	  	   Log.i(TAG, "file not found " + name);
+	 	   
+		} catch (StreamCorruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return s;
+		}
+
+	public static void saveSettingsToFile(Settings s) {
+		
+		FileOutputStream fos;
+		try {
+			
+			fos = app_ctx.openFileOutput(SETT_FNAME, Context.MODE_PRIVATE);
+			ObjectOutputStream os = new ObjectOutputStream(fos);
+			os.writeObject(s);
+			os.close();
+			fos.close();
+			Log.w(TAG, "wrote: " + SETT_FNAME);
+			
+		} catch (FileNotFoundException e) {
+
+			Toast.makeText(app_ctx, SETT_FNAME + " Файл не записан " + e.toString(), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
+			
+		} catch (IOException e) {
+			
+			Toast.makeText(app_ctx, SETT_FNAME + " Файл не записан: " + e.toString(), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static Settings loadSettingsFromFile() {
+		   
+		FileInputStream fileInputStream;
+		Settings s = null;
+		try {
+			
+			fileInputStream = app_ctx.openFileInput(SETT_FNAME);
+			ObjectInputStream oInputStream = new ObjectInputStream(fileInputStream);
+			Object one = oInputStream.readObject();
+			s = (Settings) one;
+			oInputStream.close();
+			fileInputStream.close();
+			
+		} catch (FileNotFoundException e) {
+			
+			//e.printStackTrace();
+	  	   Log.i(TAG, "file not found " + SETT_FNAME);
+	 	   
+		} catch (StreamCorruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return s;
+		}
 	
 	public static ArrayList<RSSItem> getNews() {
 		

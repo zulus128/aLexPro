@@ -1,0 +1,676 @@
+* { border: 0; padding: 0; margin: 0; outline-style: none; }
+
+input, option, textarea { font: inherit }
+
+ul { list-style: none }
+
+/* Основной стиль */
+body { font: 62.5%/1.4 Tahoma, sans-serif; background: #FFF; color: #000; overflow: hidden }
+#body { font-size: 1.2em; overflow: hidden; zoom: 1 }
+
+#desert { width: 100%; height: 100%; position: absolute; background: white url('/img/loading.gif') no-repeat center; z-index: 9999999999; left: 0; top: 0 }
+
+.fade {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 45px;
+	background: url('/img/fade.png') right repeat-y !important;
+}
+
+li.selected .fade {
+	background: url('/img/fade_selected.png') right repeat-y !important;
+}
+
+
+
+/* Левая панель */
+#panel { float: left; overflow: hidden; zoom: 1; width: 250px }
+#panel .content { overflow: auto; width: 100%; min-height: 300px }
+#panel .content .wrap { white-space: nowrap; padding: 0 10px }
+
+/* Модули */
+#modules { font-size: 90% }
+#modules a { text-decoration: none; display: block; width: 100%; background: url('/img/button-backdrop.png') repeat-x top left; border-top: 1px solid #b0afb3 }
+#modules span { height: 38px; line-height: 38px; display: block; cursor: pointer; background-repeat: no-repeat; background-position: 10px center; padding-left: 45px}
+#modules a:hover, #module-search .module-search, #module-isearch .module-isearch, #module-cat .module-cat, #module-favourites .module-favourites,
+#module-dictionary .module-dictionary, #module-document .module-document { background-image:  url('/img/button-backdrop-on.png') !important }
+#modules .transparent:hover {  background-image: url('/img/button-backdrop.png') !important }
+#module-dictionary > #panel > .content, #module-isearch > #panel > .content {overflow-x:hidden !important; overflow-y:auto !important;}
+
+/* Вертикальный движок */
+#main-resizer { left: 0 }
+
+.header-with-line { padding-left: 0 !important; padding-right: 0 !important; color: #0049d7; background: url('  ') repeat-x right center; margin: 0.5em 0 }
+.header-with-line span { background: #FFF; padding-right: 1em }
+.simple-doc-list { font-size: 90%; overflow: none }
+.simple-doc-list li { padding-left: 20px; background-repeat: no-repeat; background-position: left center; line-height: 1.8em }
+.simple-doc-list a:hover { text-decoration: underline }
+.simple-doc-list a span { color: #a3a29d !important }
+
+.doc-status-1 { background-image: url('/img/doc-16.png') }
+.doc-status-2 { background-image: url('/img/docversionobsolete-16.png') }
+.doc-status-3 { background-image: url('/img/docversionnew-16.png') }
+.doc-status-4 { background-image: url('/img/docobsolete-16.png') }
+.doc-status-5 { background-image: url('/img/docnew-16.png') }
+.doc-status-author { background-image: url('/img/docballoon-16.png') !important }
+.doc-status-empty { background-image: url('/img/docsection-16.png') }
+
+/* Заголовки с градиентом */
+.yellow-header { white-space: nowrap; overflow: hidden; border-bottom: 2px solid #fcd76a; background: #fde8a6 url('/img/yg.jpg') repeat-y left top; font-size: 140%; font-weight: bold; color: #000 }
+.yellow-header div { height: 25px; margin-left: 10px }
+
+.blue-header { white-space: nowrap; overflow: hidden; border-bottom: 2px solid #afdeff; background: #b5e2ff url('/img/bg.jpg') repeat-y left top; font-size: 140%; font-weight: bold; color: #3a85b5 }
+.blue-header div { height: 25px; margin-left: 10px }
+
+
+
+#layouts { bottom: 0; left: 0; height: 30px; border-top: 1px solid #aca899; width: 100%; background: #f3f3ee; }
+#layouts ul { right: 0; margin-right: 2px; margin-top: 3px; overflow: hidden; zoom: 1; width: 75px; float: right }
+#layouts li { background: no-repeat; center center; cursor: pointer; float: left }
+#layouts li div { background: no-repeat center center; width: 25px; height: 24px }
+#layouts li:hover, #layouts .active { background-image: url('/img/layout-backdrop.png') }
+
+/* � есайзеры*/
+.v-resizer { overflow: hidden; z-indez: 999; cursor: n-resize; position: absolute; width: 100%; height: 3px; border-bottom: 1px solid #aca899; border-top: 1px solid #aca899; background: #e0dfe3 }
+.h-resizer { overflow: hidden; z-indez: 999; cursor: w-resize; position: absolute; width: 3px; border-left: 1px solid #aca899; border-right: 1px solid #aca899; background: #e0dfe3 }
+.drag-resizer { background: url('/img/drag.png') }
+
+
+/* Данные */
+#data { position: absolute; left: 255px; background: #FFF }
+#data .content { overflow: auto; width: 100%; min-height: 400px; min-width: 600px; position: relative }
+
+/* Документ IFRAME */
+#document {/* overflow: hidden */}
+.body .back { display: none }
+
+/* Словарик */
+#module-dictionary .document { margin: 0 50px; width: auto; }
+#dictionary-search { height: 56px; background: #e0dfe3; overflow: hidden; font-size: 90% }
+#dictionary-search h1 { font-size: 100%; font-weight: normal }
+#dictionary-search .wrap { padding: 10px; padding-top: 8px }
+#dictionary-list { font-size: 90% }
+#dictionary-list li:hover a { background: #b2b4bf }
+
+a { text-decoration: none; color: #000 }
+a:hover { text-decoration: underline }
+
+.tooltip { background: #ffffe1; border: 1px solid #000 }
+.tooltip .tip { margin: 2px }
+
+#search-form { float: left; width: 70% }
+#search-form .wrap { padding: 20px }
+#search-form li { margin-bottom: 1em }
+
+#search .content { overflow: auto }
+
+/* Интеллектуальный поиск */
+#isearch .simple-list li { cursor: pointer; border-bottom: 1px solid #e0dfe3; height: 49px; background: url('/img/balloon-16.png') no-repeat 10px 8px; overflow: hidden; }
+#isearch .simple-list li span { margin-left: 35px; margin-top: 7px; display: block;}
+#isearch .simple-list li:hover { background-color: #b2b4bf }
+
+#isearch .result-list { overflow: auto }
+#isearch .result-list li { overflow: hidden; white-space: nowrap; cursor: pointer; border-bottom: 1px solid #e0dfe3; padding-left: 35px; padding-top: 10px; padding-bottom: 10px; background-repeat: no-repeat; background-position: 10px 13px }
+#isearch .result-list li div { color: #7f7f7f }
+#isearch .result-list li .title { font-weight: bold; font-size: 120%; color: black }
+#isearch .result-list li:hover,  #isearch .result-list .active { background-color: #b2b4bf }
+
+#cat .search-button { float: left; margin-top: 3px; margin-left: 5px }
+#cat .search-items a { position: relative; display: block; text-decoration: none; border-bottom: 1px solid #e0dfe3; padding: 8px 0; padding-left: 35px; background: url('/img/folder-rubricator-16.png') no-repeat 10px center; overflow: hidden; zoom: 1; white-space: nowrap }
+#cat .search-items a i { font-style: normal; display: inline-block; width: 78%; overflow: hidden }
+#cat .search-items a:hover { background-color: #e0dfe3 }
+
+#cat .search-items a b { display: inline-block; width: 20%; text-align: right }
+#cat .search-items a:hover b { background: #e0dfe3 }
+
+
+
+#cat .right-items li { cursor: pointer; padding-left: 35px; background: url('/img/folder-rubricator-16.png') no-repeat 10px center; padding-top: 5px; padding-bottom: 5px; white-space: nowrap; }
+#cat .right-documents li { background: url('/img/docsection-16.png') no-repeat 10px 10px }
+
+.top-form { background: #e0dfe3; height: 67px; font-size: 90% }
+.top-form .wrap { margin: 0 auto; width: 97%; padding-top: 15px }
+
+/* Стилизованные кнопки */
+.checked-button:hover { text-decoration: none }
+.checked-button { font-size: 90%; position: absolute; background: url('/img/button-checked-left.png') no-repeat left center; line-height: 24px; display: inline-block; padding-left: 5px }
+.checked-button b { background: url('/img/button-checked-right.png') no-repeat right center; display: inline-block; padding-right: 5px }
+.checked-button img { position: relative; margin-right: 5px; top: 3px }
+
+.unchecked-button:hover { text-decoration: none }
+.unchecked-button { text-decoration: none; font-size: 90%; position: absolute; line-height: 24px; display: inline-block; padding-left: 5px; }
+.unchecked-button b { display: inline-block; padding-right: 5px }
+.unchecked-button img { position: relative; margin-right: 5px; top: 3px }
+
+.active-item { background-color: #b2b4bf !important }
+
+
+/* Список документов */
+.simple-items-list { overflow: auto}
+.simple-items-list li { padding: 5px 0 5px 35px; white-space: nowrap; cursor: pointer; border-bottom: 1px solid #e0dfe3; background-repeat: no-repeat; background-position: 10px 10px; overflow: hidden; zoom: 1; position: relative; min-height: 32px;}
+.simple-items-list li .drop { margin-right: 30px; overflow: hidden; zoom: 1; }
+.simple-items-list li .favourite { float: right; width: 26px; height: 45px; background: url('/img/favourites-16-off.png') no-repeat left center; position: absolute; top: 0px; right: 0px; }
+.doc-favourite { float: left; width: 45px; height: 45px; background: url('/img/favourites-16-off.png') no-repeat center; cursor: pointer; display: none;}
+.enable-favourite { background-image: url('/img/favourites-16.png') }
+.simple-items-list li div { color: #7f7f7f }
+.simple-items-list li .title { color: black; font-weight: bold; white-space: nowrap; font-size: 120% ; display: inline;}
+.simple-items-list li .enable-favourite { background-image: url('/img/favourites-16.png') }
+.simple-items-list .selected { background-color: #b2b4bf !important }
+
+.tree { margin: 5px 10px; font-size: 90%; background: url('/img/tree/v-line.png') repeat-y 4px top }
+.tree ul { margin-left: 24px; background: url('/img/tree/v-line.png') repeat-y 4px top }
+.tree li { line-height: 1.8em; background: url('/img/tree/h-line.png') no-repeat 5px 10px;  white-space: nowrap }
+.tree span:hover { text-decoration: underline; cursor: pointer }
+.tree .node { cursor: pointer; margin-right: 10px }
+.tree .loading { background: white; color:  }
+.tree span { margin: 0 5px }
+.tree img.empty { visibility: hidden }
+.tree .last { background: white url('/img/tree/last.png') no-repeat 4px -16px }
+.tree .active { background-color: #b2b4bf  }
+
+/* Стили модуля "Документ" */
+#doc-help {  padding-left: 5px; height: 28px; background: #F0F0ED; border-bottom: 1px solid #9D9DA1; overflow: hidden }
+#doc-help a { margin-top: 2px }
+#doc-help .unchecked-button, #doc-help .checked-button { position: static; float: left;}
+#doc-help-content .description { margin: 5px 10px; font-family: Tahoma }
+#doc-help-content .description h1 { font-size: 90%; color: #808080; margin-bottom: 0; font-weight: normal }
+#doc-help-content .description li { margin-bottom: 1em }
+
+
+/* Оформление документа */
+.document { font-family: Georgia, serif; font-size: 1.2em; overflow: auto; position: relative; width: 100%; }
+.document .block div { padding-left: 10%; padding-right: 10%; }
+.document .block div div { padding: 0 }
+.document .block .text { padding-right: 90px; position: relative; zoom: 1 }
+
+
+
+
+
+.document .v { cursor: pointer; width: 35px; height: 24px; position: absolute; right: 37px; top: 0 }
+.document .v i { display: block; width: 35px; height: 24px; background: url('/img/ver.png') no-repeat center }
+.document .v:hover { background: url('/img/inline-button-background.png') no-repeat left top }
+
+.document .b { cursor: pointer; width: 35px; height: 24px; position: absolute; right: 0; top: 0 }
+.document .b i { display: block; width: 35px; height: 24px; background: url('/img/back.png') no-repeat center }
+.document .b:hover { background: url('/img/inline-button-background.png') no-repeat left top }
+
+
+.document .xls { cursor: pointer; width: 35px; height: 24px; position: absolute; right: -40px; top: 0 }
+.document .xls i { display: block; width: 35px; height: 24px; background: url('/img/xls-16.png') no-repeat center }
+.document .xls:hover { background: url('/img/inline-button-background.png') no-repeat left top }
+
+
+
+.document .selected-button { background: url('/img/inline-button-background.png') no-repeat left top }
+
+.document .selected-para { background-color: #E0DFE3 }
+
+
+
+.document a { color: #3333ff; text-decoration: underline }
+.document a:visited { color: #8c00ce !important; }
+.document a:hover { background: #3333ff; color: #FFF !important; text-decoration: none }
+/*.document a:visited:hover { color: #fff; }*/
+
+.document .s0,
+.document .s9 { text-align: center; font-size: 125%; font-family: Arial, Tahoma, sans-serif; font-weight: bold; padding: 10px 0 }
+.document .s10 { font-size: 80%; font-family: Arial, Tahoma, sans-serif; text-align: right; padding-bottom: 0.3em }
+
+.document .s15 .text { text-indent: 3em }
+
+.document .s15 { line-height: 1.6em; padding-top: 0.5em }
+.document .s11 { line-height: 1.6em }
+
+.document .s3 { font: 0.8em "Courier New", monospace; white-space: pre }
+.document .s5 { font: 0.8em "Courier New", monospace; white-space: pre }
+.document .s1 { font: 0.8em "Courier New", monospace; white-space: pre }
+
+
+.document span { color: #008000; border-bottom: 1px dashed #008000; cursor: pointer }
+.document span:hover { background: #008000; border-bottom: 0; color: white }
+
+.document span.selected { background: #008000; border-bottom: 0; color: white }
+
+.document pre { line-height: 1em !important; font-family: "Courier New", monospace }
+
+.document .marker { background: #E0DFE3 }
+.document .marker div { }
+.document .marker .back {  }
+
+
+.document .text b { background: yellow; font-weight: inherit }
+
+
+
+
+#multi-links { height: 5em; font-size: 90%; position: absolute; background: white; left: 450px; top: 100px; width: 475px; height: 100px; border: 1px solid #96969a; z-index: 9999; background: #f8f8f8 url('/img/menu-gradient.png') repeat-y left top; overflow: auto }
+#multi-links li { line-height: 1.8em; cursor: pointer; padding-left: 30px; white-space: nowrap; overflow: hidden; border: 1px solid transparent }
+#multi-links li:hover { border: 1px solid #c2c4cf; background: #f5f6f9 }
+#multi-links li.selected { border: 1px solid #c2c4cf; background: #f5f6f9 }
+#multi-links a { text-decoration: none }
+
+#para-show { padding: 0; position: absolute; width: 400px; height: 510px; border: 1px solid black; background: #f8f8f8; z-index: 9999 }
+
+.disable-links span { color: black; border: 0; cursor: pointer !important }
+.disable-links span:hover { color: black; border: 0; background: none; cursor: default !important }
+.disable-links .b,
+.disable-links .v { display: none }
+.disable-links a { color: black; cursor: default !important; text-decoration: none }
+.disable-links a:hover { color: black; cursor: default !important; text-decoration: none !important; background: white }
+.disable-links a:hover { color: black; cursor: default !important; text-decoration: none !important; background: white }
+#isearch a:hover {background: #E0DFE3}
+
+/*мой код*/
+.disable-author-links span { color: black !important; border: none; background: none; cursor: default !important }
+.disable-author-links span:hover { color: black !important; border: none; background: none; cursor: default !important }
+/*.disable-links .b,
+.disable-links .v { display: none }
+.disable-links a { color: black; cursor: default !important; text-decoration: none }
+.disable-links a:hover { color: black; cursor: default !important; text-decoration: none !important; background: white }*/
+/*~мой код*/
+
+#search-in-document span { color: red }
+
+#bottom-panel { height: 30px; border-top: 1px solid #aca899; background: #f3f3ee ; min-width: 260px; overlow: hidden;}
+
+/* Версия документа просрочена */
+#document-expired img { position: absolute; right: 1em; top: 6px; cursor: pointer }
+#document-expired { overflow: hidden; font-size: 90%; position: relative; padding-left: 2em; height: 30px; line-height: 30px; background: #FDE8A4; border-top: 1px solid white; border-bottom: 1px solid #D6D5D9 }
+#document-expired a { color: #3333ff; text-decoration: underline }
+
+/* Текущая версия документа */
+#current-version { width: 140px; font-size: 90%; height: 30px; float: right }
+#current-version img { cursor: pointer; float: right; margin-left: 5px }
+#current-version div { width: 110px; background-color: white; line-height: 1.8em; margin-top: 5px; margin-right: 10px; border: 1px solid #7F9DB9; background-repeat: no-repeat; background-position: left center ; padding-left: 20px }
+
+#versions { width: 130px; font-size: 90%; line-height: 1.8em; position: absolute; right: 10px; bottom: 25px; background: white; z-index: 9999; border: 1px solid black}
+#versions li { background-repeat: no-repeat; padding-left: 20px }
+#versions a { text-decoration: none }
+#versions li:hover,
+#versions .active { background-color: #b2b4bf }
+
+.toggle { display: none }
+
+/* */
+.gray { color: #808080 }
+
+/* Быстрый поиск */
+#complex { width: 446px; position: absolute; right: 3px; top: 3px; z-index: 100; background: url('/img/complex-search-16.png') no-repeat 218px 1px }
+#complex .input { float: right; width: 200px; border: 1px solid #7F9DB9; background: white }
+#complex .field { text-align: right; overflow: hidden; zoom: 1 }
+
+#complex .result { font-size: 90%; border: 1px solid #aca899; overflow: hidden; zoom: 1; background: url('/img/complex-backdrop.png') repeat-y left top }
+#complex .result li { cursor: pointer; line-height: 2em; overflow: hidden; zoom: 1 }
+#complex .result li:hover { background-color: #296cc7 !important}
+#complex .result li:hover div { color: white }
+#complex .result h1 { color: #929290; text-align: right; font-size: 100%; font-weight: normal; width: 140px; float: left }
+#complex .result div { margin-right: 3px; width: 260px; float: right;  white-space: nowrap; overflow: hidden; padding-left: 25px; background-repeat: no-repeat; background-position: left center }
+#complex .result .head div { font-weight: bold; background: none }
+#complex .result .icon-dictionary div { background-image: url('/img/dictionary-16.png') }
+#complex .result .icon-cat div { background-image: url('/img/rubricator-16.png') }
+#complex .result .icon-isearch div { background-image: url('/img/balloon-16.png') }
+#complex .result .icon-document div { background-image: url('/img/search-16.png') }
+#complex .result .empty { background: url('/img/complex-empty.png') no-repeat right center; height: 10px; overflow: hidden; line-height: 0em }
+
+/* Поле с width: 100% */
+.input-100 { overflow: hidden; padding: 2px; border: 1px solid #7f9db9; background: white }
+.input-100 input { font: 100% 'Arial', sans-serif; float: left; font-size: 100%; width: 100%; border: 0 }
+.input-clear { background: url('/img/input_clear.png') no-repeat; width: 15px; height: 16px; position: absolute; right: 1px; top: 1px; display: none;}
+
+/* Основная форма поиска по документам */
+#doc-search { margin: 10px 0 0 20px; overflow: hidden; zoom: 1 }
+#doc-search .left-part { font-size: 90%; margin-right: 270px }
+#doc-search .right-part { width: 250px; float: right }
+
+#doc-search .field { padding-bottom: 5px }
+#doc-search .field h1 { font-size: 100%; font-weight: normal; margin-bottom: 5px }
+#doc-search .field h1 a { display: inline-block; color: #0049d7; text-decoration: underline; background: url('/img/selectcomponents-16.png') no-repeat right bottom; padding-right: 18px; padding-top: 10px }
+#doc-search .field .input { background: white; border: 1px solid #a5acb2; padding-left: 4px }
+#doc-search .field .input input { background: white }
+
+#doc-search .enable { border: 1px solid #9d9da1 !important }
+#doc-search .enable .table { display: block !important }
+#doc-search .enable a { background: white url('/img/opt-enable.png') no-repeat 10px 6px !important }
+#doc-search .options { border: 1px solid white; margin: 5px 0 }
+#doc-search .options .table { display: none; margin: 10px }
+#doc-search .options h1 { font-size: 100%; font-weight: normal; margin-top: -8px; text-align: right; margin-right: 3px }
+#doc-search .options h1 a { padding: 0 5px 0 20px; color: #0049d7; text-decoration: underline; background: white url('/img/opt-disable.png') no-repeat 12px 4px }
+#doc-search .options table { font-size: 100% }
+#doc-search .options table .head td { padding: 0; padding-bottom: 5px }
+#doc-search .options table td { padding: 0 10px }
+#doc-search label { display: block; padding-bottom: 2px }
+#document-status label {width: 150px;}
+
+#doc-search .date { margin: 10px 0; background: url('/img/date-backdrop.png') no-repeat left 24px; height: 64px; width: 298px; overflow: hidden }
+#doc-search .date label { display: inline-block; padding-left: 5px; height: 25px; line-height: 25px }
+#doc-search .date label b { display: inline-block; height: 27px; width: 5px }
+#doc-search .date .selected { background: url('/img/date-backdrop.png') no-repeat left top }
+#doc-search .date .selected b { background: url('/img/date-backdrop.png') no-repeat right top }
+#doc-search .date ul { margin: 5px 10px 5px 10px }
+#doc-search .date li { display: none }
+#doc-search .date .active-page { display: block }
+#doc-search .date ul input { border: 1px solid #7f9db9; width: 105px; padding: 2px; font-size: 100% }
+#doc-search .date .range { height: 22px; background: url('/img/date-select.png') no-repeat 23px 4px !important; overflow: hidden; zoom: 1 }
+#doc-search .date .range .total { float: left }
+#doc-search .date .range .last { float: right }
+
+#date-drag-container { position: relative; float: left; width: 195px; height: 21px; margin-left: 5px }
+#date-drag { cursor: pointer; position: absolute; background: url('/img/date-drag.png') no-repeat left top; width: 11px; height: 21px }
+
+#doc-search .buttons { margin-top: 20px }
+#doc-search .buttons input { margin-bottom: 5px }
+
+/* Окно фильтра */
+#filter { font-size: 90%; position: absolute; width: 503px; z-index: 20000 }
+#filter img { cursor: pointer }
+#filter .wrap { border: 1px solid #66667e; background: #e0dfe3 }
+#filter .header { cursor: move; background: url('/img/windows-backdrop.png') no-repeat }
+#filter .header img { float: right; margin: 7px 5px 0 0; cursor: pointer }
+#filter .header div { background: url('/img/selectcomponents-16.png') no-repeat 10px center; height: 28px; line-height: 28px; padding-left: 30px; font-weight: bold }
+#filter .search .help { padding: 5px 0 }
+#filter .search { padding: 0 20px }
+#filter .search .form { background: url('/img/find-16.png') no-repeat left center; padding-left: 25px }
+#filter .search .input { border: 1px solid #7f9db9; background: white }
+#filter .list { padding: 5px 20px }
+#filter .list .selected {  background-color: #b2b4bf }
+#filter .list ul {  width: 458px; overflow: auto; height: 150px; border: 1px solid #7f9db9; background: white }
+#filter .list li { cursor: pointer; overflow: hidden; white-space: nowrap; line-height: 1.6em; padding-left: 25px; background-position: 5px 2px; background-repeat: no-repeat }
+#filter .top li { background-image: url('/img/removed-16.png') }
+#filter .bottom li { background-image: url('/img/added-16.png') }
+#filter .resizer { background: url('/img/resizer.png') no-repeat center center; height: 5px }
+#filter .up-buttons,
+#filter .buttons { text-align: right; padding: 0 20px }
+#filter .buttons { margin: 5px 0 10px 0; padding-bottom: 10px }
+
+#backdrop { position: absolute; left: 0; top: 0; z-index: 19000; background: black }
+
+/* Страница быстрого поиска */
+#complex-modules { margin: 5px 10px; font-size: 90%; white-space: nowrap }
+#complex-modules label { line-height: 2.5em; height: 2.5em; display: block; background-repeat: no-repeat; background-position: 25px center; overflow: hidden }
+#complex-modules label input { margin-left: 5px; margin-right: 35px }
+#complex-modules li { zoom: 1 }
+#complex-modules li span { text-decoration: underline; color: #b2b4bf }
+#complex-modules li:hover span { color: #e2e4ef }
+#complex-modules .selected { background-color: #efeff1; border: 1px solid #e0dfe3 }
+#complex-modules .selected span { color: black !important; text-decoration: none }
+
+#complex-result li { zoom: 1 }
+#complex-result .items li { line-height: 2.5em; overflow: hidden; white-space: nowrap; padding-left: 35px; border-bottom: 1px solid #e0dfe3; background-repeat: no-repeat; background-position: 10px center; position: relative; }
+#complex-result .head { overflow: hidden; line-height: 2em; border-bottom: 2px solid #ffc83c; font-size: 1.4em; color: #ffc83c; padding-left: 10px; font-weight: bold }
+#complex-result .head div { margin-top: 12px; float: left; width: 9px; height: 9px; margin-right: 5px; background: url('/img/tree/on.png') no-repeat left top; cursor: pointer }
+#complex-result .off .head div { background-image: url('/img/tree/off.png') }
+#complex-result .off .items { display: none }
+#complex-result .off .bottom { display: none }
+#complex-result .bottom { font-size: 90%; padding-left: 35px; line-height: 3em; background-color: #efeff1; border-bottom: 1px solid #e0dfe3 }
+#complex-result .more { display: none }
+#complex-result .show-more .more { display: block }
+#complex-result .show-more .first { display: none }
+#complex-result span { display: inline; color: #b2b4bf; text-decoration: underline }
+#complex-result .icon-dictionary li { background-image: url('/img/dictionary-16.png') }
+#complex-result .icon-cat li { background-image: url('/img/rubricator-16.png') }
+#complex-result .icon-isearch li { background-image: url('/img/balloon-16.png') }
+#complex-result .icon-document li { background-image: url('/img/search-16.png') }
+
+/* История поиска */
+#history-toggle { right: 0; margin-top: 3px; margin-right: 5px }
+#history-view .head { background: url('/img/viewpanel-bottom-16.png') no-repeat left center; padding-left: 25px }
+#history-view .scroll { overflow: auto }
+#history-view .scroll li:hover { background-color: #b5b6bd }
+#history-view .scroll li:hover span { background-image: url('/img/history-button-left-white.png') }
+#history-view .scroll li:hover span b { background-image: url('/img/history-button-right-white.png') }
+#history-view .scroll li { cursor: pointer; white-space: nowrap; border-bottom: 1px solid #e7dfe7; line-height: 2.5em; padding-left: 35px; background: url('/img/search-16.png') no-repeat 10px center }
+#history-view .scroll li span { margin-right: 5px; background: url('/img/history-button-left.png') no-repeat left center; display: inline-block; padding-left: 10px }
+#history-view .scroll li span b { display: inline-block; width: 10px; background: url('/img/history-button-right.png') no-repeat right center }
+#history-view .scroll li .right { float: right; width: 115px; overflow: hidden; text-align: right; color: #adaa9c; margin-right: 5px }
+#history-view .scroll li .left { width: 80%; overflow: hidden; zoom: 1 }
+
+/* Счетчики */
+#counters { font-size: 90%; margin-top: 20px }
+#counters li { zoom: 1; overflow: hidden; line-height: 1.8em; white-space: nowrap }
+#counters .visible { display: block !important }
+#counters li span { float: right; color: #0049D7 }
+#counters .regions { overflow: auto }
+#counters .regions span { margin-right: 13px }
+#counters .regions li { padding-left: 10px; display: none }
+#counters .scopes span { margin-right: 13px }
+#counters li a  { /*width: 180px; display: block;*/ overflow: hidden;  }
+#counters li.empty a { color: #ACA899; text-decoration: none; cursor: default }
+#counters li.empty ai:hover { background: none }
+#counters .header-with-line { margin-right: 13px }
+#counters .filter { display: block !important }
+#counters .filter a { width: auto; display: inline-block; color: #0049d7; text-decoration: underline; background: url('/img/selectcomponents-16.png') no-repeat right bottom; padding-right: 18px; padding-top: 10px }
+
+#total-documents { float: right; margin-right: 13px; font-size: 90%; color: #0049D7 }
+
+.steel { background-image: url('/img/steel.png') }
+
+#more-items { background: none !important; text-align: center; padding: 5% 0 !important; color: gray; cursor: default !important }
+
+#not-found { padding: 10px 40px; font-size: 130% }
+#not-found ul { list-style: square; margin-left: 40px }
+
+.layout-0 .items { position: static; width: auto !important; height: auto !important }
+
+.layout-1 { overflow: hidden !important }
+.layout-1 .items { position: absolute; width: 200px }
+.layout-1 .body { left: auto !important; position: absolute; display: block !important }
+.layout-1 .v-resizer { display: block !important }
+
+.layout-2 { overflow: hidden !important }
+.layout-2 .h-resizer { display: block !important }
+.layout-2 .items { position: absolute; }
+.layout-2 .body { top: auto !important; position: absolute; display: block !important }
+
+/* Форма уточнения запроса */
+
+.adjustment .query { background: url('/img/steel.png'); padding: 5px 10px; font-size: 90%; border-bottom: 1px solid #A7A6AA }
+.adjustment .query span { color: #0049E5 !important }
+.adjustment .query .text { font-weight: bold !important }
+.adjustment .page-manager { padding-left: 5px; background: #e8e7eb; border-bottom: 1px solid #d6d5d9; height: 26px; border-top: 1px solid white }
+.adjustment .page-manager .form-activate-button { left: 85px }
+.adjustment .page-manager a { margin-top: 1px }
+.adjustment .form { background: url('/img/steel.png') }
+.adjustment .form-page { display: block }
+.adjustment .counters-page { display: none }
+.adjustment .counters-page .empty span { display: none }
+.adjustment .counters-page .active { background: url(/img/opt-disable.png) no-repeat scroll left center}
+.adjustment .counters-page a { padding-left: 10px }
+.adjustment .counters-page .regions li { padding-left: 0 !important}
+.adjustment .counters-page .regions a { padding-left: 20px !important }
+
+.adjustment .form .form-page { display: none }
+.adjustment .form .counters-page { display: block; margin-top: 5px !important }
+.adjustment .form .counters-page li span { margin: 0 !important }
+.adjustment .form .form-buttons { display: none }
+.adjustment .form-buttons { margin: 10px 0 }
+
+
+.adjustment form { margin: 0 !important }
+.adjustment .left-part { width: 100% !important; float: none !important }
+
+/* Обратные ссылки */
+.value-list li { overflow: hidden; zoom: 1; line-height: 1.8em; padding-left: 10px }
+.value-list li:hover,
+.value-list li.active { background: url('/img/opt-disable.png') no-repeat left 6px }
+.value-list .empty { background: none !important }
+.value-list .empty span { color: #ACA899 !important }
+.value-list .empty a { white-space: nowrap; color: #ACA899 !important; cursor: default; background: none !important; text-decoration: none }
+.value-list span { float: right }
+.value-list a { float: left }
+
+#back-links-left { font-size: 90% }
+#back-links-left ul { margin: 5px 10px 0 20px }
+
+#back-links-right .items li { display: none }
+#back-links-right .set-scope-0 li { display: list-item !important }
+#back-links-right .set-scope-1 li.scope-1,
+#back-links-right .set-scope-2 li.scope-2,
+#back-links-right .set-scope-3 li.scope-3,
+#back-links-right .set-scope-4 li.scope-4,
+#back-links-right .set-scope-5 li.scope-5 { display: list-item !important }
+
+/* История версий */
+.show { display: block !important }
+#changelog { position: absolute; width: 40%; height: 300px; border: 1px solid black; left: 30%; top: 100px; z-index: 11000; background: white; overflow: auto; font-size: 100% }
+#changelog div { margin: 10px }
+#changelog .red { color: red }
+#changelog ul { padding-left: 40px; list-style: square }
+#changelog h1 { font-size 110%; line-height: 2em }
+#changelog ul li { padding-bottom: 5px }
+
+/* Избранное */
+#sortable-tree { margin: 5px 0 0 10px }
+#sortable-tree li { cursor: pointer }
+#sortable-tree ul { margin-left: 20px }
+
+/* Подсказки-фильтры */
+.fixed-size { height: 100px; overflow: auto }
+#hint { position: absolute; left: 0; top: 0; background: white; display: none; z-index: 9999; border: 1px solid black }
+#hint li { cursor: pointer; }
+#hint li:hover { background: #b2b4bf }
+
+
+
+.timemachine { font: 1.1em Arial sans-serif; width: 168px; height: 213px; position: absolute; background: url('/img/timemachine/backdrop.png') no-repeat left top }
+* html .timemachine { background-image: url('/img/timemachine/backdrop-ie.png') }
+.timemachine .inner { margin: 4px 0 0 7px; width: 154px; overflow: hidden }
+
+.timemachine .controls { border-bottom: 1px solid #b8b0a6; overflow: hidden; zoom: 1; line-height: 25px }
+.timemachine .controls li { float: left }
+
+/* Элементы управления вперед/назад */
+.timemachine .controls a.prev,
+.timemachine .controls a.next { display: block; width: 11px; height: 10px; background: url('/img/timemachine/icons.png') no-repeat }
+
+.timemachine .controls a.prev { margin: 7px 0 0 2px; background-position: -7px -8px }
+.timemachine .controls a.next { margin: 7px 2px 0 0; background-position: -32px -8px }
+.timemachine .controls a.prev:hover { background-position: -7px -33px }
+.timemachine .controls a.next:hover { background-position: -32px -33px }
+
+.timemachine .controls .select-date { width: 127px; text-align: center }
+.timemachine .controls .select-date a { text-decoration: none; color: #5a5f64 }
+.timemachine .controls .select-date a:hover { text-decoration: underline; color: #ff4000 }
+input.empty { color: #999 }
+
+/* Дни недели */
+.timemachine .week { overflow: hidden; zoom: 1; border-bottom: 1px solid #b8b0a6; line-height: 18px; font-weight: bold; margin-bottom: 2px; width: 160px}
+.timemachine .week a { color: #0072bc; display: block; float: left; width: 22px; text-align: center; text-decoration: none }
+.timemachine .week a:hover { text-decoration: underline; color: #ff4000 }
+
+/* Месяц */
+.timemachine .month { overflow: auto; zoom: 1; width: 160px; font-size: 0.9em }
+.timemachine .month a { float: left; margin-right: 2px; margin-bottom: 2px; display: block; width: 20px; line-height: 20px; background: url('/img/timemachine/icons.png') no-repeat -2px -52px; text-decoration: none; color: #5a5f64; text-align: center }
+.timemachine .month a.other { background-position: -27px -52px; color: #8c8c8c }
+.timemachine .month a.weekend { background-position: -52px -52px }
+.timemachine .month a.today { font-size: 1.1em; background-position: -77px -52px; color: white }
+.timemachine .month a.days { background-position: -127px -52px; color: black }
+.timemachine .month a:hover { font-size: 1.1em; background-position: -102px -52px; color: white }
+
+/* Today */
+.timemachine div.today { font-weight: bold; text-align: center; border-top: 1px solid #b8b0a6; line-height: 20px; overflow: hidden; zoom: 1 }
+* html .timemachine div.today { margin-top: 2px }
+html>body .timemachine .inner div.today { margin-top: 2px }
+.timemachine div.today a { float: left; display: block }
+.timemachine div.today a.value { color: black; text-decoration: none;  width: 137px }
+.timemachine div.today a.value:hover { text-decoration: underline; color: #ff4000 }
+
+.timemachine div.today a.close { background: url('/img/timemachine/icons.png') no-repeat -55px -6px; width: 12px; height: 13px; margin-top: 5px; }
+
+
+
+
+
+/* About */
+#about { cursor: move; position: absolute; left: 0; top: 0; background: transparent url('/img/about.png') no-repeat left top; width: 509px; height: 303px }
+#about img { position: absolute; right: 20px; top: 20px; cursor: pointer }
+
+/* � аботает AJAX */
+#loading-box { width: 249px; height: 86px; position: absolute; left: 0; top: 0; background: url('/img/loading/backdrop.png') no-repeat left top; margin-top: -86px; z-index: 9999999}
+#loading-box .message { font-family: 'Trebuchet MS'; color: white; font-size: 1.1em; margin-top: 32px; margin-left: 27px; margin-bottom: 7px }
+#loading-box .bar { margin: 0 27px; background: white; height: 9px; overflow: hidden; border: 2px solid white; background: url('/img/loading/bar.png') repeat-x left top }
+
+/* Окно сообщения */
+#alerter { position: absolute; z-index: 9999999; margin: 5px; overflow: hidden; zoom: 1; cursor: pointer }
+#alerter span { overflow: hidden; float: left; display: inline-block; line-height: 51px; height: 51px; color: #e7e7e7 }
+#alerter .right { background: url('/img/alerter/right.png') no-repeat left center; width: 8px }
+#alerter .text { background: url('/img/alerter/left.png') no-repeat left center; padding: 0 30px }
+
+.visible, .visible * { visibility: visible !important }
+.invisible, .invisible * { visibility: hidden !important }
+
+.hidden { display: none !important }
+.collapse-block { height: 0; overflow: hidden }
+
+
+
+/* включение комментариев в документе */
+#toggle-comments { float: right; margin-right: 10px; margin-top: 2px }
+
+/* поиск по документу */
+#inline-search-toggler { float: left; margin-left: 5px; margin-top: 2px }
+#inline-search-panel { background-color: #F3F3EE; height: 50px; border-bottom: 1px solid white; border-top: 1px solid #ACA899; position: relative; }
+#inline-search-panel div.inp { margin: 5px }
+#inline-search-panel .input { border: 1px solid #A5ACB2; height: 19px; }
+#inline-search-panel .modes { position: absolute; bottom: 0; left: 20px }
+#inline-search-panel .modes select { border: 1px solid #A5ACB2 }
+
+
+#to-rtf { float: left; margin-left: 5px; margin-top: 2px }
+
+#print { float: left; margin-left: 5px; margin-top: 2px }
+
+
+/* кнопка */
+.icon-button { display: inline-block; width: 26px; height: 27px; overflow: hidden; zoom: 1; background-position: center; background-repeat: no-repeat }
+.icon-button a { width: 26px; height: 27px; display: inline-block; background-position: center; background-repeat: no-repeat }
+.icon-button-enable { background-image: url('/img/button-on.png') }
+
+/* popup меню для документа */
+.pp-menu { font-size: 0.9em; position: absolute; z-index: 999999; width: 250px; overflow: hidden; zoom: 1; background: #FFF; border: 1px solid #979797 }
+.pp-menu .wrap { margin: 1px; background: url('/img/gradient-backdrop.png') repeat-y left top }
+.pp-menu h1 { background: #fde9a4; font-weight: bold; text-align: center; line-height: 20px; font-size: 1em }
+.pp-menu a { text-decoration: none; display: block; background-repeat: no-repeat; background-position: 2px center; padding-right: 5px; }
+.pp-menu a:hover { border: 1px solid #c5c4c9; background-color: #FFF; }
+.pp-menu a:hover b { background-image: url('/img/triangle-with-shadow.png') }
+.pp-menu a.selected { border: 1px solid #c5c4c9; background-color: #FFF; }
+.pp-menu a.selected b { background-image: url('/img/triangle-with-shadow.png') }
+.pp-menu a b { cursor: pointer; display: block; line-height: 20px; margin-left: 28px; font-weight: normal; whipe-space: nowrap; background: url('/img/triangle.png') no-repeat 210px center }
+
+.pp-menu .link-icon { background-image: url('/img/link-icon.png') }
+.pp-menu .versions-icon { background-image: url('/img/versions-icon.png') }
+.pp-menu .doc-icon { background-image: url('/img/doc-16.png') }
+
+/* Превью документа  */
+#preview { font: 1.2em Georgia, serif; position: absolute; left 100px; top: 100px; width: 455px; z-index: 999999; overflow: auto; zoom: 1; background: #FFF url('/img/gradient-backdrop.png') repeat-y left top; border: 1px solid black  }
+#preview .wrap { margin-left: 20px; margin-right: 0px }
+#preview .wrap div { padding: 0.2em 0.5em 0.2em 0.5em}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+#sub-pp-menu {position: absolute; left: 0; top: 0; width: 450px; overflow: auto }
+#sub-pp-menu a {  width: 430px; line-height: 1em; overflow: hidden; white-space: nowrap }
+#sub-pp-menu a b {  background: none; background-position: right center; overflow: hidden }
+
+
+#popular { margin-right: 270px; overflow: hidden; zoom: 1 }
+#popular .gray-line { margin-top: 15px; border-top: 1px solid #9d9da1; overflow: hidden; height: 5px }
+#popular .column { overflow: hidden }
+#popular .left { float: left; width: 50% }
+#popular .right { float: left; width: 50% }
+#popular .head { padding: 0; font-size: 1em; font-weight: bold; font-family: Arial, Tahoma, sans-serif }
+#popular li { white-space: nowrap; width: 90%; overflow: hidden }
+
+.strtoupper { text-transform: uppercase }
+
+#scopes\.21,
+#scopes\.22,
+#scopes\.23,
+#scopes\.24 { padding-left: 10px }
+
+#doc-not-found { font-size: 1.3em; margin: 10px }

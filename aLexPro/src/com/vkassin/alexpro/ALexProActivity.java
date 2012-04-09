@@ -1,9 +1,17 @@
 package com.vkassin.alexpro;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import android.app.TabActivity;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
@@ -14,13 +22,42 @@ public class ALexProActivity extends TabActivity {
 	
 	private static final float textsize = 11.5f;
 	
-    /** Called when the activity is first created. */
+	private void copyFile(InputStream in, OutputStream out) throws IOException {
+		
+	    byte[] buffer = new byte[1024];
+	    int read;
+	    while((read = in.read(buffer)) != -1){
+	      out.write(buffer, 0, read);
+	    }
+	}
+
+	/** Called when the activity is first created. */
     @Override
 	public void onCreate(Bundle savedInstanceState) {
 		
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
 
+	    
+        InputStream in = null;
+        OutputStream out = null;
+//        AssetManager assetManager = getResources().getAssets();
+        try {
+//          in = assetManager.open("raw/style.css");
+          in = getAssets().open("style.css");
+          out = new FileOutputStream(getFilesDir().getAbsolutePath() + File.separator + "style.css");
+          copyFile(in, out);
+          in.close();
+          in = null;
+          out.flush();
+          out.close();
+          out = null;
+        } catch(Exception e) {
+            Log.e("copy style.css ERROR", e.toString());
+            e.printStackTrace();
+        }       
+	    
+	    
 	    Common.app_ctx = getApplicationContext();
 	    
 	    Common.loadFavr();

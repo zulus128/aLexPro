@@ -13,21 +13,29 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
+import com.vkassin.alexpro.Common.item_type;
+
 import android.app.Activity;
 import android.app.ListActivity;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.webkit.ConsoleMessage;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 
 public class DownloadActivity extends ListActivity {
 
@@ -36,27 +44,32 @@ public class DownloadActivity extends ListActivity {
 	private DownloadArrayAdapter adapter;
 	private ProgressBar pb;
 	private WebView engine;
+	private boolean flag;
 	
-	private String ccc;
+	private static final int CONTEXTMENU_DELETEITEM = 1;
+	private int selectedRowId;
+
 	
-	class MyJavaScriptInterface  
-	{  
-	    @SuppressWarnings("unused")  
-	    public void showHTML(String html)  
-	    {  
-//	        new AlertDialog.Builder(myApp)  
-//	            .setTitle("HTML")  
-//	            .setMessage(html)  
-//	            .setPositiveButton(android.R.string.ok, null)  
-//	        .setCancelable(false)  
-//	        .create()  
-//	        .show();
-	    	
-	    	ccc = html;
-	    	
-	    	Log.w(TAG, ccc);
-	    }  
-	} 
+//	private String ccc;
+	
+//	class MyJavaScriptInterface  
+//	{  
+//	    @SuppressWarnings("unused")  
+//	    public void showHTML(String html)  
+//	    {  
+////	        new AlertDialog.Builder(myApp)  
+////	            .setTitle("HTML")  
+////	            .setMessage(html)  
+////	            .setPositiveButton(android.R.string.ok, null)  
+////	        .setCancelable(false)  
+////	        .create()  
+////	        .show();
+//	    	
+//	    	ccc = html;
+//	    	
+//	    	Log.w(TAG, ccc);
+//	    }  
+//	} 
 	
 	public void onCreate(Bundle icicle) {
 
@@ -65,16 +78,12 @@ public class DownloadActivity extends ListActivity {
             
 		engine = (WebView) findViewById(R.id.web_engine_fav);
 		engine.getSettings().setJavaScriptEnabled(true);
-		engine.getSettings().setDomStorageEnabled(true);
-		engine.getSettings().setAppCacheMaxSize(1024*1024*8);
-//        engine.getSettings().setAppCachePath("/data/data/de.app/cache");
+//		engine.getSettings().setDomStorageEnabled(true);
+//		engine.getSettings().setAppCacheMaxSize(1024*1024*8);
+//		String appCachePath = "/data/data/com.vkassin.alexpro/cache";//getApplicationContext().getCacheDir().getAbsolutePath();
+//		engine.getSettings().setAppCachePath(appCachePath);
 //		engine.getSettings().setAllowFileAccess(true);
 //		engine.getSettings().setAppCacheEnabled(true);
-		String appCachePath = "/data/data/com.vkassin.alexpro/cache";//getApplicationContext().getCacheDir().getAbsolutePath();
-		engine.getSettings().setAppCachePath(appCachePath);
-		engine.getSettings().setAllowFileAccess(true);
-		engine.getSettings().setAppCacheEnabled(true);
-//		engine.clearCache(false);
 		
 		pb = (ProgressBar)findViewById(R.id.ProgressBar02);
 
@@ -88,37 +97,39 @@ public class DownloadActivity extends ListActivity {
 	                String msg = cmsg.message().substring(5); // strip off prefix
 
 	                /* process HTML */
-	                ccc = msg;
+//	                ccc = msg;
 
+	                Common.saveStringToFile(Common.title, msg);
+	                
+	                RSSItem i = new RSSItem(item_type.IT_KODEKS);
+	        		i.title = Common.title;
+	        		i.mplink = Common.addfav_url;
+//	        		i.fulltext = msg;
+	        		Common.addToFavr(i);
+
+	        		pb.setVisibility(View.GONE);
+	        		
 	                return true;
 	            }
 
 	            return false;
 	        }
 	        
-			public void onProgressChanged(WebView view, int progress) {
-				
-				if(progress < 100)
-					pb.setVisibility(View.VISIBLE);
-				else {
-					
-					pb.setVisibility(View.GONE);
-					
-//					engine.saveWebArchive(getFilesDir().getAbsolutePath() + File.separator + "my.webarchive");
-//					engine.saveWebArchive("file:///android_asset/qqq");
-					
-//					String savename = "ggg.webarchive";
-//					ValueCallback<String> callback = null;
-//					engine.saveWebArchive(getFilesDir().getAbsolutePath() + File.separator  + savename , true , callback);
-//					engine.saveWebArchive(getFilesDir().getAbsolutePath() + File.separator  + savename);
-//					Log.i("~~~~~~~~~~~~~callback~~~~~~~~~~~~~~","" + callback);
-//					engine.loadUrl("file://" +getFilesDir().getAbsolutePath() + File.separator  + savename);
-
-				}
-					
-//				activity.setProgress(progress * 1000);
-//				Log.w(TAG, ""+progress);
-			}
+//			public void onProgressChanged(WebView view, int progress) {
+//				
+//				if(progress < 100)
+//					pb.setVisibility(View.VISIBLE);
+//				else {
+//					
+//					pb.setVisibility(View.GONE);
+//					
+////					engine.saveWebArchive(getFilesDir().getAbsolutePath() + File.separator + "my.webarchive");
+//
+//				}
+//					
+////				activity.setProgress(progress * 1000);
+////				Log.w(TAG, ""+progress);
+//			}
 		});
 	    
 	    engine.setWebViewClient(new WebViewClient() {
@@ -129,13 +140,28 @@ public class DownloadActivity extends ListActivity {
 	    	}
 	    	
 	    	   @Override  
+	    	   public void onPageStarted (WebView view, String url, Bitmap favicon)  
+	    	    {  
+	    		   
+	    		   pb.setVisibility(View.VISIBLE);
+	    	    }
+	    	   @Override  
 	    	    public void onPageFinished(WebView view, String url)  
 	    	    {  
-	    	        /* This call inject JavaScript into the page which just finished loading. */  
+	    	       
+	    		   if(!flag) {
+	    			   
+		    		   pb.setVisibility(View.GONE);
+		    		   return;
+
+	    		   }
+	    		   
+	    		   /* This call inject JavaScript into the page which just finished loading. */  
 //	    	        engine.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
 	    	        Log.w(TAG, "logggg");
 	    	        engine.loadUrl("javascript:console.log('MAGIC'+document.getElementsByTagName('html')[0].innerHTML);");
 //	    	        engine.loadUrl("javascript:console.log('MAGIC'+document.getElementsByTagName('body')[0].outerText);");
+	    	        
 	    	    }  
 	    });
 
@@ -155,6 +181,9 @@ public class DownloadActivity extends ListActivity {
 //			}
 //		});
 		 
+		ListView listView = getListView();
+		listView.setBackgroundColor(Color.WHITE);
+		registerForContextMenu(listView);
 	}
 	
 	@Override
@@ -162,7 +191,7 @@ public class DownloadActivity extends ListActivity {
 		super.onListItemClick(l, v, position, id);
 		
 		//Log.i(TAG,"click");
-		final RSSItem it = adapter.getItems().get(position);
+		RSSItem it = adapter.getItems().get(position);
 		
 		this.getListView().setVisibility(View.GONE);
         engine.setVisibility(View.VISIBLE);
@@ -238,7 +267,7 @@ public class DownloadActivity extends ListActivity {
 		
 		
 //		engine.loadUrl(it.mplink);
-        Log.w(TAG, "CCC = " + ccc);
+//        Log.w(TAG, "CCC = " + ccc);
 //		engine.loadData(ccc, "text/html", "utf-8");
 //		engine.loadDataWithBaseURL(null, ccc, "text/html", "utf-8", null);
 
@@ -247,8 +276,9 @@ public class DownloadActivity extends ListActivity {
 //		engine.loadDataWithBaseURL("file:///android_asset/", htmlData, "text/html", "UTF-8", null);
 	
         
+        flag = false;
         
-		String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" /> <html>" + ccc + "</html>";
+		String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" /> <html>" + Common.loadStringFromFile(it.title) + "</html>";
         engine.loadDataWithBaseURL("file://"+getFilesDir().getAbsolutePath() + File.separator, htmlData, "text/html", "UTF-8", null);
 	}
 	
@@ -273,6 +303,8 @@ public class DownloadActivity extends ListActivity {
         	Common.addfav_flag = false;
     		this.getListView().setVisibility(View.GONE);
             engine.setVisibility(View.VISIBLE);
+            engine.clearView();
+            flag = true;
     		engine.loadUrl(Common.addfav_url);
 //			engine.loadUrl("file://" +getFilesDir().getAbsolutePath() + File.separator  + "ggg.webarchive");
   		
@@ -307,6 +339,53 @@ public class DownloadActivity extends ListActivity {
         
         return super.onKeyDown(keyCode, event);
     }
+
+	public void onCreateContextMenu(ContextMenu menu, View v,ContextMenuInfo menuInfo) {  
+		
+		super.onCreateContextMenu(menu, v, menuInfo);  
+	    
+	    AdapterView.AdapterContextMenuInfo info =
+            (AdapterView.AdapterContextMenuInfo) menuInfo;
+//	    selectedWord = ((TextView) info.targetView).getText().toString();
+	    selectedRowId = (int)info.id;
+    
+		menu.setHeaderTitle("Меню");  
+	    menu.add(0, CONTEXTMENU_DELETEITEM, 0, "Удалить");  
+	}  
 	
+	   @Override  
+	   public boolean onContextItemSelected(MenuItem item) {  
+		   
+		    // Delete row
+		    //long rowId = getListView().getSelectedItemPosition();
+		    if (selectedRowId >= 0) {
+			Log.i(TAG, "Deleting row: " + selectedRowId);
+			
+			Common.delFavr(selectedRowId);
+			
+			adapter.setItems(Common.getFavrs());
+			adapter.notifyDataSetChanged();
+		    }
+/*			AlertDialog ad = new AlertDialog.Builder(this)
+			    .setIcon(android.R.drawable.ic_dialog_alert)
+			    .setTitle(R.string.confirm_delete)
+			    .setPositiveButton(R.string.yes, new
+	DialogInterface.OnClickListener() {
+				    public void onClick(DialogInterface dialog, int whichButton) {
+					// User clicked Yes so delete the contexts.
+					deleteSelectedRow();
+				    }
+				})
+			    .setNegativeButton(R.string.no, new
+	DialogInterface.OnClickListener() {
+	 			    public void onClick(DialogInterface dialog, int whichButton) {
+	 				// User clicked No so don't delete (do nothing).
+	 			    }
+	 			})
+			    .show();
+		    }*/
+	   return true;  
+	   }  
+
 	
 }
