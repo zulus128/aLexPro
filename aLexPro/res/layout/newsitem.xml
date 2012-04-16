@@ -4,30 +4,32 @@
     android:paddingLeft="3dp" android:paddingBottom="5dp"
     >
 
-<RelativeLayout android:id="@+id/LinearLayout01" android:orientation="horizontal"
+<LinearLayout android:id="@+id/LinearLayout01" android:orientation="horizontal"
 android:background="#ffffff" android:paddingLeft="8dp" android:paddingTop="3dp" android:paddingRight="8dp"
 android:layout_height="fill_parent" android:layout_width="fill_parent"
 >
     
 <TextView
-android:layout_width="fill_parent" 
+android:layout_width="wrap_content" 
 android:layout_height="wrap_content"
-android:textSize="16dp"
+android:textSize="15dp"
 android:textColor="#000000"
 android:background="#ffffff"
-android:layout_gravity="center_vertical"
+android:layout_weight="145"
 android:id="@+id/NewsTitleTextView" android:lines="2"></TextView>
 
 <TextView 
 android:layout_width="wrap_content" 
 android:layout_height="20dp" 
-android:textSize="16dp"
+android:textSize="15dp"
 android:textColor="#000000" android:textStyle="bold"
-android:layout_alignParentRight="true"
+android:layout_gravity="center_vertical"
+android:layout_weight="0.6"
+android:gravity="right"
 android:id="@+id/NewsDateTextView">
 </TextView>
 
-</RelativeLayout>
+</LinearLayout>
 
 
 					<TextView android:layout_width="fill_parent"
@@ -37,7 +39,6 @@ android:id="@+id/NewsDateTextView">
 						android:textColor="#000000"
 						android:id="@+id/NewsRubricTextView"
 						android:layout_gravity="center_vertical"
-						android:layout_weight="0.7" 
 						android:minHeight="13dp"
 						android:lines="1"
 						></TextView>
