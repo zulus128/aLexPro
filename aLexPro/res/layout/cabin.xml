@@ -66,5 +66,13 @@ android:layout_centerHorizontal="true"
 
      
  </LinearLayout>
- 
+        
+<WebView android:id="@+id/web_engine_cab"  
+             android:layout_width="fill_parent"  
+             android:layout_height="fill_parent"  
+             android:visibility="gone"
+            />
+      	<ProgressBar android:id="@+id/ProgressBar05"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_centerInParent="true" android:visibility="invisible"></ProgressBar>
      </RelativeLayout>
