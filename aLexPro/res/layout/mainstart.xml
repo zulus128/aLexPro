@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/r_051616"
     android:baselineAligned="false"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >  <RelativeLayout
+            android:layout_width="fill_parent"
+         android:layout_height="wrap_content">
+         
      <ImageView
          android:id="@+id/imageView1"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
          android:layout_marginTop="0dp"
+         android:contentDescription="logo"
          android:src="@drawable/logo" />
+    </RelativeLayout>
     
-    <RelativeLayout
+    <LinearLayout
          android:id="@+id/relativeLayout1"
-         android:layout_width="wrap_content"
+         android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:background="@drawable/border"
-         android:layout_marginLeft="100dp"
          android:layout_centerInParent="true">
-         
+     
       <Button
-         android:id="@+id/button1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="30dp"
-         android:layout_marginLeft="30dp"
-         android:textColor="#FFF"
-         android:background="@drawable/bu_bg_blue"
-         android:text="@string/btn1" />
-
-     <Button
+          android:id="@+id/button1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:background="@drawable/bu_bg_blue"
+          android:text="@string/btn1"
+          android:layout_weight="1"
+         android:layout_marginLeft="5dp"
+         android:layout_marginRight="5dp"
+          android:textColor="#FFF" />
+      
+     <Button
          android:id="@+id/button2"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginTop="30dp"
-         android:layout_marginRight="30dp"
          android:background="@drawable/bu_bg_black"
          android:text="@string/btn2"
-         android:layout_alignParentRight="true"
+         android:layout_weight="1"
+         android:layout_marginLeft="5dp"
+         android:layout_marginRight="5dp"
+          android:layout_marginTop="20dp"
          android:textColor="#FFF" />
          
-     </RelativeLayout>
+     </LinearLayout>
 
      
- </RelativeLayout>
+ </LinearLayout>

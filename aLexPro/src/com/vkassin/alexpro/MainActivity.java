@@ -94,16 +94,18 @@ public class MainActivity extends Activity {
 		if(sss != null) {
 			
 			Common.paid = sss.paid;
-			go();
-			return;
+//			go();
+//			return;
 		}
-		
+		else
 		sss = new Settings();
 		
 		setContentView(R.layout.mainstart);
 		Button btn1 = (Button) this.findViewById(R.id.button1);
 		
 	    if (btn1!= null) {
+	    	
+//	    	btn1.setWidth(20);
 	        btn1.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {
 	            	Log.w(TAG, "button1 clicked");
@@ -118,7 +120,8 @@ public class MainActivity extends Activity {
 	    Button btn2 = (Button) this.findViewById(R.id.button2);
 		
 	    if (btn2!= null) {
-	        btn2.setOnClickListener(new OnClickListener() {
+//    	btn2.setWidth(10);
+        btn2.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {
 	            	Log.w(TAG, "button2 clicked");
 	            	sss.paid = Common.paid_type.PT_ONLINE;
