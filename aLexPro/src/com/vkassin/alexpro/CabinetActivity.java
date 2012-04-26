@@ -25,6 +25,7 @@ public class CabinetActivity extends Activity {
 		pb = (ProgressBar)findViewById(R.id.ProgressBar05);
 		engine = (WebView) findViewById(R.id.web_engine_cab);
 		engine.getSettings().setJavaScriptEnabled(true);
+		engine.getSettings().setBuiltInZoomControls(true);
 
 	    engine.setWebViewClient(new WebViewClient() {
 	    	

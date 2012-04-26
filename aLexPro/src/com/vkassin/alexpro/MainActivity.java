@@ -34,6 +34,8 @@ public class MainActivity extends Activity {
 		
 	    pb = (ProgressBar)findViewById(R.id.ProgressBar00);
 		engine = (WebView) findViewById(R.id.web_engine);
+		engine.getSettings().setBuiltInZoomControls(true);
+//		engine.getSettings().setDisplayZoomControls(false);
 //		engine.setWebViewClient(new HelloWebViewClient());
 		engine.getSettings().setJavaScriptEnabled(true);
 //		engine.getSettings().setDomStorageEnabled(true);
