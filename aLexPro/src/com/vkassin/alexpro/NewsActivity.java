@@ -1,12 +1,14 @@
 package com.vkassin.alexpro;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -73,7 +75,14 @@ public class NewsActivity extends Activity {
 				//Log.i(TAG, "row: "+arg2+" arg3: "+arg3);
 			}
 		});
-    	    	
+    	    
+//    	Locale locale = new Locale("us");
+//    	Locale.setDefault(locale);
+//    	Configuration config = new Configuration();
+//    	config.locale = locale;
+//    	getBaseContext().getResources().updateConfiguration(config,
+//    	      getBaseContext().getResources().getDisplayMetrics());
+    	
     	refresh();
     	
     }

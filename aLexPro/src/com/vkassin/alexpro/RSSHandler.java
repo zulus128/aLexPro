@@ -3,6 +3,7 @@ package com.vkassin.alexpro;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,10 +104,15 @@ public class RSSHandler extends DefaultHandler {
 					if(inItem && localName.trim().equals(Common.DATE_TAG)) {
 			       		try {
 //			       			DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.US);
-			       			DateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy");
+//			       			ss = ss.substring(0, 16);
+//			       			DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.US);
+			       			DateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy", Locale.US);
+//			       			NumberFormat nf = NumberFormat.getInstance(Locale.US);
+//			       			df.setNumberFormat(nf);
 		        			currentItem.pubDate = df.parse(ss);//new Date(Date.parse(ss));
+//			       			currentItem.pubDate = new Date(Date.parse(ss));
 		        		} catch (Exception e) {
-		        			Log.e(TAG, "Can't convert date: " + ss);
+		        			Log.e(TAG, "Can't convert date: " + ss + e.toString());
 		        			currentItem.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 		        		}
 					}
