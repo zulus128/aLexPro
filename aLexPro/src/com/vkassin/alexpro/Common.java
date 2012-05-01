@@ -75,6 +75,8 @@ public class Common {
 	public static String title;
 	
 	public static paid_type paid;
+//	public static paid_type paid1;
+	public static String curl;
 	
 	public static void addToFavr(RSSItem item) {
 	

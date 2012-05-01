@@ -34,10 +34,11 @@ public class MainActivity extends Activity {
 		
 	    pb = (ProgressBar)findViewById(R.id.ProgressBar00);
 		engine = (WebView) findViewById(R.id.web_engine);
-		engine.getSettings().setBuiltInZoomControls(true);
+		engine.getSettings().setBuiltInZoomControls(false);
 //		engine.getSettings().setDisplayZoomControls(false);
 //		engine.setWebViewClient(new HelloWebViewClient());
 		engine.getSettings().setJavaScriptEnabled(true);
+		engine.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
 //		engine.getSettings().setDomStorageEnabled(true);
 //		engine.getSettings().setAppCacheMaxSize(1024*1024*8);
 //		String appCachePath = "/data/data/com.vkassin.alexpro/cache";//getApplicationContext().getCacheDir().getAbsolutePath();
@@ -47,7 +48,8 @@ public class MainActivity extends Activity {
 //		engine.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
 		
-		engine.loadUrl((Common.paid == Common.paid_type.PT_ONLINE)?Common.WEB_ONLINE:Common.WEB_OPEN);
+//		engine.loadUrl((Common.paid == Common.paid_type.PT_ONLINE)?Common.WEB_ONLINE:Common.WEB_OPEN);
+		engine.loadUrl(Common.curl);
 //		pb.setVisibility(View.VISIBLE);
 //		final Activity activity = MainActivity.this;
 	    engine.setWebChromeClient(new WebChromeClient() {
@@ -80,6 +82,7 @@ public class MainActivity extends Activity {
 	    	
 		    @Override
 		    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+		    	Common.curl = url;
 		        view.loadUrl(url);
 		        return true;
 		    }
@@ -92,15 +95,21 @@ public class MainActivity extends Activity {
 		super.onCreate(icicle);
 		
 	    
-		sss = Common.loadSettingsFromFile();
-		if(sss != null) {
-			
-			Common.paid = sss.paid;
-//			go();
-//			return;
+//		sss = Common.loadSettingsFromFile();
+//		if(sss != null) {
+//			
+//			Common.paid = sss.paid;
+////			go();
+////			return;
+//		}
+//		else
+//		sss = new Settings();
+
+//		Log.w(TAG, "paid1 = "+Common.paid1);
+		if((Common.paid != null ) && (Common.paid != Common.paid_type.PT_NONE)) {
+			go();
+			return;
 		}
-		else
-		sss = new Settings();
 		
 		setContentView(R.layout.mainstart);
 		Button btn1 = (Button) this.findViewById(R.id.button1);
@@ -111,9 +120,11 @@ public class MainActivity extends Activity {
 	        btn1.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {
 	            	Log.w(TAG, "button1 clicked");
-	            	sss.paid = Common.paid_type.PT_OPEN;
-	            	Common.paid = sss.paid;
-	            	Common.saveSettingsToFile(sss);
+//	            	sss.paid = Common.paid_type.PT_OPEN;
+	            	Common.paid = Common.paid_type.PT_OPEN;
+	            	Common.curl = Common.WEB_OPEN;
+//	            	Common.paid1 = sss.paid;
+//	            	Common.saveSettingsToFile(sss);
 	            	go();
 	            }
 	        });
@@ -126,9 +137,11 @@ public class MainActivity extends Activity {
         btn2.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {
 	            	Log.w(TAG, "button2 clicked");
-	            	sss.paid = Common.paid_type.PT_ONLINE;
-	            	Common.paid = sss.paid;
-	            	Common.saveSettingsToFile(sss);
+//	            	sss.paid = Common.paid_type.PT_ONLINE;
+	            	Common.paid = Common.paid_type.PT_ONLINE;
+	            	Common.curl = Common.WEB_ONLINE;
+//	            	Common.paid1 = sss.paid;
+//	            	Common.saveSettingsToFile(sss);
 	            	go();
 	            }
 	        });
