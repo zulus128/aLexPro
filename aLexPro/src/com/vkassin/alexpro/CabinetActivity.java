@@ -66,6 +66,22 @@ public class CabinetActivity extends Activity {
 //	            	Log.w(TAG, "button3 clicked");
 	                engine.clearView();
 	        		engine.setVisibility(View.VISIBLE);
+	        		engine.loadUrl(Common.WEB_OPEN);
+
+	            }
+	        });
+	    }
+
+	    Button btn4 = (Button) this.findViewById(R.id.button4);
+		
+	    if (btn4!= null) {
+//    	btn2.setWidth(10);
+        btn4.setOnClickListener(new OnClickListener() {
+	            public void onClick(View v) {
+
+//	            	Log.w(TAG, "button4 clicked");
+	                engine.clearView();
+	        		engine.setVisibility(View.VISIBLE);
 	        		engine.loadUrl(Common.WEB_ONLINE);
 
 	            }

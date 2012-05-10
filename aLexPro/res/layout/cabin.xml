@@ -26,14 +26,32 @@
          android:src="@drawable/logo" />
     </RelativeLayout>
     
-  <RelativeLayout
-            android:layout_width="fill_parent"
-         android:layout_height="wrap_content">
-  <Button
-         android:id="@+id/button3"
+      <LinearLayout
+         android:id="@+id/relativeLayout1"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/border"
+         android:layout_centerInParent="true">
+     
+
+      <Button
+          android:id="@+id/button3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:background="@drawable/bu_bg_blue"
+          android:text="@string/btn1"
+          android:layout_weight="1"
+         android:layout_marginLeft="5dp"
+         android:layout_marginRight="5dp"
+          android:textColor="#FFF" />
+      
+
+
+     <Button
+         android:id="@+id/button4"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
          android:background="@drawable/bu_bg_black"
          android:text="@string/btn2"
          android:layout_weight="1"
@@ -41,8 +59,9 @@
          android:layout_marginRight="5dp"
           android:layout_marginTop="20dp"
          android:textColor="#FFF" />
-    </RelativeLayout>
-        
+         
+     </LinearLayout>
+      
     <RelativeLayout
          android:id="@+id/relativeLayout1"
          android:layout_width="fill_parent"
