@@ -78,6 +78,8 @@ public class Common {
 //	public static paid_type paid1;
 	public static String curl;
 	
+	public static boolean fromCab;
+	
 	public static void addToFavr(RSSItem item) {
 	
 		favourites.add(item);

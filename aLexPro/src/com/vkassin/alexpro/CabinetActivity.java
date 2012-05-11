@@ -64,10 +64,14 @@ public class CabinetActivity extends Activity {
 	            public void onClick(View v) {
 
 //	            	Log.w(TAG, "button3 clicked");
-	                engine.clearView();
-	        		engine.setVisibility(View.VISIBLE);
-	        		engine.loadUrl(Common.WEB_OPEN);
+//	                engine.clearView();
+//	        		engine.setVisibility(View.VISIBLE);
+//	        		engine.loadUrl(Common.WEB_OPEN);
 
+	            	Common.fromCab = true;
+	            	Common.curl = Common.WEB_OPEN;
+	            	Common.paid = Common.paid_type.PT_OPEN;
+	        		Common.tabHost.setCurrentTab(0);
 	            }
 	        });
 	    }
@@ -80,9 +84,14 @@ public class CabinetActivity extends Activity {
 	            public void onClick(View v) {
 
 //	            	Log.w(TAG, "button4 clicked");
-	                engine.clearView();
-	        		engine.setVisibility(View.VISIBLE);
-	        		engine.loadUrl(Common.WEB_ONLINE);
+//	                engine.clearView();
+//	        		engine.setVisibility(View.VISIBLE);
+//	        		engine.loadUrl(Common.WEB_ONLINE);
+
+	            	Common.fromCab = true;
+	            	Common.curl = Common.WEB_ONLINE;
+	            	Common.paid = Common.paid_type.PT_ONLINE;
+	        		Common.tabHost.setCurrentTab(0);
 
 	            }
 	        });

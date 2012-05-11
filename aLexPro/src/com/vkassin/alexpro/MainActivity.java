@@ -89,6 +89,16 @@ public class MainActivity extends Activity {
 	    });
 		
 	}
+
+	public void onResume() {
+		
+		Log.w(TAG, "onResume");
+		super.onResume();
+		if(!Common.fromCab)
+			return;
+		Common.fromCab = false;
+		go();
+	}
 	
 	public void onCreate(Bundle icicle) {
 
